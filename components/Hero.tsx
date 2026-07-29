@@ -1,55 +1,103 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden bg-black">
 
-      {/* 背景 */}
+      {/* Mobile Hero Background */}
+      <Image
+        src="/images/hero/hero-mobile.png"
+        alt="Gumayusi"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center md:hidden"
+      />
+
+      {/* Desktop Hero Background */}
       <Image
         src="/images/hero/hero.png"
         alt="Gumayusi"
         fill
         priority
-        className="object-cover"
+        sizes="100vw"
+        className="hidden object-cover object-center md:block"
       />
 
-      {/* 黑色遮罩 */}
-      <div className="absolute inset-0 bg-black/25" />
+      {/* Dark Overlay */}
+      <div className="pointer-events-none absolute inset-0 z-10 bg-black/20" />
 
-      {/* Hero 內容 */}
+      {/* Hero CTA */}
       <div
         className="
           absolute
-          right-[22%]
-          top-[33%]
-          -translate-y-1/2
+          left-1/2
+          top-[12%]
           z-20
+          -translate-x-1/2
           text-center
+
+          md:left-auto
+          md:right-[22%]
+          md:top-[33%]
+          md:translate-x-0
+          md:-translate-y-1/2
         "
       >
-        <button
+        <Link
+          href="/projects/6th-anniversary"
           className="
+            inline-flex
+            items-center
+            justify-center
+            whitespace-nowrap
             rounded-full
             border
-            border-[#d94a35]
-            px-12
-            py-5
-            text-base
-            font-medium
+            border-red-500/70
+
+            px-6
+            py-4
+            text-[10px]
             uppercase
-            tracking-[0.35em]
+            tracking-[0.25em]
             text-white
+
             transition-all
-            duration-500
-            hover:bg-[#d94a35]
-            hover:border-[#d94a35]
-            animate-pulse
+            duration-300
+
+            hover:border-red-400
+            hover:bg-red-500/10
+
+            sm:px-8
+            sm:text-xs
+            sm:tracking-[0.3em]
+
+            md:px-10
+            md:py-5
+            md:text-sm
+            md:tracking-[0.35em]
           "
         >
           EXPLORE 6TH ANNIVERSARY
-        </button>
+        </Link>
       </div>
-
+   {/* Image Copyright */}
+  <p
+    className="
+    absolute
+    bottom-4
+    left-1/2
+    z-20
+    -translate-x-1/2
+    whitespace-nowrap
+    text-[8px]
+    tracking-[0.12em]
+    text-white/40
+  "
+  >
+  Images © LoL Esports. For non-commercial fan project use only.
+  </p>
     </section>
   );
 }
