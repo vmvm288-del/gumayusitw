@@ -24,3 +24,148 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ========================================
+   ANNIVERSARY ENTRANCE
+======================================== */
+
+.anniversary-entrance {
+  pointer-events: none;
+}
+
+
+/* ========================================
+   DARKNESS
+   單純、連續地淡出
+======================================== */
+
+.entrance-darkness {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+
+  background: #050505;
+  opacity: 1;
+
+  will-change: opacity;
+
+  animation: entrance-darkness 4.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes entrance-darkness {
+  0% {
+    opacity: 1;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 0.82;
+  }
+
+  65% {
+    opacity: 0.42;
+  }
+
+  85% {
+    opacity: 0.12;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   HORIZON LINE
+   從頭到尾保持亮度
+======================================== */
+
+.entrance-sunrise-line {
+  position: absolute;
+
+  z-index: 30;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 235, 215, 0.12) 15%,
+    rgba(255, 245, 230, 0.38) 35%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 245, 230, 0.38) 65%,
+    rgba(255, 235, 215, 0.12) 85%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 4px rgba(255, 255, 255, 0.35),
+    0 0 10px rgba(255, 210, 180, 0.18);
+
+  opacity: 1;
+}
+
+
+/* ========================================
+   CENTER LIGHT
+   很小的固定光點
+======================================== */
+
+.entrance-sunrise-point {
+  position: absolute;
+
+  z-index: 40;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 3px;
+  height: 3px;
+
+  transform: translate(-50%, 50%);
+
+  border-radius: 9999px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 0 5px 2px rgba(255, 255, 255, 0.55),
+    0 0 12px 5px rgba(255, 220, 190, 0.22);
+
+  opacity: 1;
+}
+
+
+/* ========================================
+   DARKNESS ANIMATION
+======================================== */
+
+@keyframes entrance-darkness {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .anniversary-entrance {
+    display: none;
+  }
+}
