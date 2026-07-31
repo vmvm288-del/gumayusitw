@@ -19,8 +19,8 @@ export default function AnniversaryInfo() {
         }
       },
       {
-        threshold: 0.25,
-        rootMargin: "0px 0px -15% 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 
@@ -43,7 +43,7 @@ export default function AnniversaryInfo() {
           <p
             className={`
               mb-3 text-sm uppercase tracking-[0.4em] text-white/60
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -57,15 +57,15 @@ export default function AnniversaryInfo() {
           <h2
             className={`
               text-4xl font-bold tracking-wide md:text-5xl
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+                  : "translate-y-5 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "120ms",
+              transitionDelay: "60ms",
             }}
           >
             活動資訊
@@ -79,15 +79,15 @@ export default function AnniversaryInfo() {
             border border-white/25
             bg-white/[0.07]
             px-7 py-10 md:px-12 md:py-12
-            transition-all duration-1000 ease-out
+            transition-all duration-500 ease-out
             ${
               isVisible
                 ? "translate-y-0 opacity-100"
-                : "translate-y-5 opacity-0"
+                : "translate-y-4 opacity-0"
             }
           `}
           style={{
-            transitionDelay: "300ms",
+            transitionDelay: "120ms",
           }}
         >
 
@@ -115,7 +115,7 @@ export default function AnniversaryInfo() {
           <div
             className={`
               relative z-10 flex items-center gap-5
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -123,7 +123,7 @@ export default function AnniversaryInfo() {
               }
             `}
             style={{
-              transitionDelay: "500ms",
+              transitionDelay: "180ms",
             }}
           >
             <p className="text-xs uppercase tracking-[0.4em] text-white/60">
@@ -143,15 +143,15 @@ export default function AnniversaryInfo() {
             {/* Date */}
             <div
               className={`
-                transition-all duration-1000 ease-out
+                transition-all duration-500 ease-out
                 ${
                   isVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
               style={{
-                transitionDelay: "620ms",
+                transitionDelay: "240ms",
               }}
             >
               <p className="mb-5 text-xs uppercase tracking-[0.4em] text-white/50">
@@ -185,15 +185,15 @@ export default function AnniversaryInfo() {
             <div
               className={`
                 grid content-start gap-8
-                transition-all duration-1000 ease-out
+                transition-all duration-500 ease-out
                 ${
                   isVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
               style={{
-                transitionDelay: "760ms",
+                transitionDelay: "300ms",
               }}
             >
               {/* Venue */}
@@ -234,7 +234,7 @@ export default function AnniversaryInfo() {
               relative z-10 mt-12
               flex items-center gap-5
               border-t border-white/20 pt-6
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -242,7 +242,7 @@ export default function AnniversaryInfo() {
               }
             `}
             style={{
-              transitionDelay: "900ms",
+              transitionDelay: "360ms",
             }}
           >
             <p className="text-xs tracking-[0.3em] text-white/50">
@@ -262,7 +262,7 @@ export default function AnniversaryInfo() {
           className={`
             mt-8 max-w-4xl
             text-sm leading-7 text-white
-            transition-all duration-700 ease-out
+            transition-all duration-400 ease-out
             ${
               isVisible
                 ? "translate-y-0 opacity-100"
@@ -270,7 +270,7 @@ export default function AnniversaryInfo() {
             }
           `}
           style={{
-            transitionDelay: "1050ms",
+            transitionDelay: "420ms",
           }}
         >
           <p>

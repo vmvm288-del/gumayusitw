@@ -19,8 +19,8 @@ export default function AnniversaryIntro() {
         }
       },
       {
-        threshold: 0.4,
-        rootMargin: "0px 0px -20% 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 
@@ -45,7 +45,7 @@ export default function AnniversaryIntro() {
           <p
             className={`
               mb-3 text-sm uppercase tracking-[0.4em] text-white/60
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -60,15 +60,15 @@ export default function AnniversaryIntro() {
           <h2
             className={`
               text-4xl font-bold tracking-wide md:text-5xl
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+                  : "translate-y-5 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "120ms",
+              transitionDelay: "60ms",
             }}
           >
             活動介紹
@@ -80,15 +80,15 @@ export default function AnniversaryIntro() {
           className={`
             max-w-3xl space-y-6
             text-base leading-8 text-white/85 md:text-lg
-            transition-all duration-1000 ease-out
+            transition-all duration-500 ease-out
             ${
               isVisible
                 ? "translate-y-0 opacity-100"
-                : "translate-y-5 opacity-0"
+                : "translate-y-4 opacity-0"
             }
           `}
           style={{
-            transitionDelay: "320ms",
+            transitionDelay: "140ms",
           }}
         >
           <p>

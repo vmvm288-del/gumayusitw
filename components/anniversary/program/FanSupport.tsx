@@ -65,8 +65,8 @@ export default function FanSupport() {
       sectionRef.current,
       () => setSectionVisible(true),
       {
-        threshold: 0.18,
-        rootMargin: "0px 0px -15% 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 
@@ -74,8 +74,8 @@ export default function FanSupport() {
       codeRef.current,
       () => setCodeVisible(true),
       {
-        threshold: 0.18,
-        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.12,
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
@@ -83,8 +83,8 @@ export default function FanSupport() {
       luckyRef.current,
       () => setLuckyVisible(true),
       {
-        threshold: 0.08,
-        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.06,
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
@@ -92,8 +92,8 @@ export default function FanSupport() {
       departureRef.current,
       () => setDepartureVisible(true),
       {
-        threshold: 0.25,
-        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
@@ -120,7 +120,7 @@ export default function FanSupport() {
           <p
             className={`
               mb-5 text-sm tracking-[0.35em] text-[#241f35]/60
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
@@ -134,14 +134,14 @@ export default function FanSupport() {
           <p
             className={`
               text-sm tracking-[0.35em] text-[#241f35]/70
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0"
+                  : "translate-y-3 opacity-0"
               }
             `}
-            style={{ transitionDelay: "100ms" }}
+            style={{ transitionDelay: "50ms" }}
           >
             FAN SUPPORT
           </p>
@@ -149,19 +149,18 @@ export default function FanSupport() {
           <h3
             className={`
               mt-3 text-3xl font-bold md:text-4xl
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+                  : "translate-y-5 opacity-0"
               }
             `}
-            style={{ transitionDelay: "200ms" }}
+            style={{ transitionDelay: "100ms" }}
           >
             應援內容
           </h3>
         </div>
-
 
         {/* ========================================
             CODE
@@ -174,11 +173,11 @@ export default function FanSupport() {
           {/* CODE Title */}
           <div
             className={`
-              transition-all duration-800 ease-out
+              transition-all duration-400 ease-out
               ${
                 codeVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
+                  : "translate-y-4 opacity-0"
               }
             `}
           >
@@ -196,14 +195,14 @@ export default function FanSupport() {
             <p
               className={`
                 max-w-2xl text-base leading-8 text-[#241f35]/80
-                transition-all duration-800 ease-out
+                transition-all duration-400 ease-out
                 ${
                   codeVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
-              style={{ transitionDelay: "120ms" }}
+              style={{ transitionDelay: "60ms" }}
             >
               凡滿足來店低消，即可獲得一份來店應援禮。
             </p>
@@ -214,14 +213,14 @@ export default function FanSupport() {
               <div
                 className={`
                   border border-[#241f35]/30 p-6
-                  transition-all duration-900 ease-out
+                  transition-all duration-500 ease-out
                   ${
                     codeVisible
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-6 opacity-0"
+                      : "translate-y-4 opacity-0"
                   }
                 `}
-                style={{ transitionDelay: "240ms" }}
+                style={{ transitionDelay: "120ms" }}
               >
                 <p className="text-xs tracking-[0.25em] text-[#241f35]/50">
                   POSTCARD
@@ -240,14 +239,14 @@ export default function FanSupport() {
               <div
                 className={`
                   border border-[#241f35]/30 p-6
-                  transition-all duration-900 ease-out
+                  transition-all duration-500 ease-out
                   ${
                     codeVisible
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-6 opacity-0"
+                      : "translate-y-4 opacity-0"
                   }
                 `}
-                style={{ transitionDelay: "360ms" }}
+                style={{ transitionDelay: "180ms" }}
               >
                 <p className="text-xs tracking-[0.25em] text-[#241f35]/50">
                   COASTER
@@ -266,21 +265,20 @@ export default function FanSupport() {
             <p
               className={`
                 mt-6 text-sm leading-7 text-[#241f35]/60
-                transition-all duration-800 ease-out
+                transition-all duration-400 ease-out
                 ${
                   codeVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
+                    : "translate-y-3 opacity-0"
                 }
               `}
-              style={{ transitionDelay: "500ms" }}
+              style={{ transitionDelay: "240ms" }}
             >
               應援禮款式隨機發放，恕無法指定。
               杯墊準備數量僅 200 個，若發放完畢則改為發放小貼紙。
             </p>
           </div>
         </div>
-
 
         {/* ========================================
             LUCKY DRAW
@@ -295,11 +293,11 @@ export default function FanSupport() {
             {/* Lucky Draw Title */}
             <div
               className={`
-                transition-all duration-800 ease-out
+                transition-all duration-400 ease-out
                 ${
                   luckyVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
             >
@@ -315,14 +313,14 @@ export default function FanSupport() {
             {/* Lucky Draw Intro */}
             <div
               className={`
-                transition-all duration-900 ease-out
+                transition-all duration-500 ease-out
                 ${
                   luckyVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
-              style={{ transitionDelay: "120ms" }}
+              style={{ transitionDelay: "60ms" }}
             >
               <p className="text-xl font-medium leading-8">
                 試試手氣嗎？
@@ -349,7 +347,6 @@ export default function FanSupport() {
             </div>
           </div>
 
-
           {/* ========================================
               PRIZE POOL
           ======================================== */}
@@ -357,14 +354,14 @@ export default function FanSupport() {
           <div
             className={`
               mt-16
-              transition-all duration-900 ease-out
+              transition-all duration-500 ease-out
               ${
                 luckyVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+                  : "translate-y-4 opacity-0"
               }
             `}
-            style={{ transitionDelay: "300ms" }}
+            style={{ transitionDelay: "120ms" }}
           >
             <div className="mb-6 flex items-end justify-between">
               <div>
@@ -392,16 +389,16 @@ export default function FanSupport() {
                     border-b border-[#241f35]/30 py-5
                     md:grid-cols-[140px_1fr_auto]
 
-                    transition-all duration-800 ease-out
+                    transition-all duration-400 ease-out
 
                     ${
                       luckyVisible
                         ? "translate-y-0 opacity-100"
-                        : "translate-y-4 opacity-0"
+                        : "translate-y-3 opacity-0"
                     }
                   `}
                   style={{
-                    transitionDelay: `${420 + index * 90}ms`,
+                    transitionDelay: `${180 + index * 45}ms`,
                   }}
                 >
                   <p className="text-sm text-[#241f35]/60">
@@ -420,7 +417,6 @@ export default function FanSupport() {
             </div>
           </div>
 
-
           {/* ========================================
               POOL RULES
           ======================================== */}
@@ -431,14 +427,14 @@ export default function FanSupport() {
             <div
               className={`
                 border border-[#241f35]/30 p-7
-                transition-all duration-900 ease-out
+                transition-all duration-500 ease-out
                 ${
                   luckyVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-6 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
-              style={{ transitionDelay: "950ms" }}
+              style={{ transitionDelay: "420ms" }}
             >
               <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
                 CARRY OVER
@@ -458,14 +454,14 @@ export default function FanSupport() {
             <div
               className={`
                 border border-[#241f35]/30 p-7
-                transition-all duration-900 ease-out
+                transition-all duration-500 ease-out
                 ${
                   luckyVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-6 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
-              style={{ transitionDelay: "1070ms" }}
+              style={{ transitionDelay: "480ms" }}
             >
               <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
                 GUARANTEE
@@ -488,20 +484,19 @@ export default function FanSupport() {
             className={`
               mt-8 space-y-2
               text-xs leading-6 text-[#241f35]/50
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 luckyVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-3 opacity-0"
               }
             `}
-            style={{ transitionDelay: "1200ms" }}
+            style={{ transitionDelay: "540ms" }}
           >
             <p>＊每日獎池分配將於活動說明圖片中公開。</p>
             <p>＊備案機制：若中性筆贈送完畢，則以明信片替補。</p>
           </div>
         </div>
-
 
         {/* ========================================
             DEPARTURE
@@ -516,11 +511,11 @@ export default function FanSupport() {
             {/* Departure Label */}
             <div
               className={`
-                transition-all duration-800 ease-out
+                transition-all duration-400 ease-out
                 ${
                   departureVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
             >
@@ -536,14 +531,14 @@ export default function FanSupport() {
             {/* Departure Content */}
             <div
               className={`
-                transition-all duration-1000 ease-out
+                transition-all duration-500 ease-out
                 ${
                   departureVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-6 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
-              style={{ transitionDelay: "140ms" }}
+              style={{ transitionDelay: "70ms" }}
             >
               <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
                 DEBUT ANNIVERSARY ONLY

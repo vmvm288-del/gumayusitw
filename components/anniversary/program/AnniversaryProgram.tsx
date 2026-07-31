@@ -24,7 +24,7 @@ export default function AnniversaryProgram() {
         }
       },
       {
-        threshold: 0.2,
+        threshold: 0.15,
         rootMargin: "0px 0px -10% 0px",
       }
     );
@@ -52,7 +52,7 @@ export default function AnniversaryProgram() {
               mb-3
               text-sm uppercase tracking-[0.4em]
               text-[#241f35]/60
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -67,15 +67,15 @@ export default function AnniversaryProgram() {
           <h2
             className={`
               text-4xl font-bold tracking-wide md:text-5xl
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+                  : "translate-y-5 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "120ms",
+              transitionDelay: "60ms",
             }}
           >
             活動內容
@@ -86,15 +86,15 @@ export default function AnniversaryProgram() {
             className={`
               mt-6 max-w-2xl
               text-sm leading-7 text-[#241f35]/65 md:text-base
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
+                  : "translate-y-4 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "300ms",
+              transitionDelay: "140ms",
             }}
           >
             四個篇章，構成這次屬於 Gumayusi 六週年的紀念企劃。
@@ -122,7 +122,7 @@ export default function AnniversaryProgram() {
 
             origin-top
             transition-transform
-            duration-[1800ms]
+            duration-[800ms]
             ease-out
 
             ${
@@ -132,7 +132,7 @@ export default function AnniversaryProgram() {
             }
           `}
           style={{
-            transitionDelay: "450ms",
+            transitionDelay: "180ms",
           }}
         />
 

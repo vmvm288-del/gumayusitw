@@ -90,33 +90,30 @@ export default function SpecialMenu() {
       return observer;
     };
 
-    // Section Title
     const titleObserver = observeOnce(
       titleRef.current,
       () => setSectionVisible(true),
       {
-        threshold: 0.2,
+        threshold: 0.15,
         rootMargin: "0px 0px -10% 0px",
       }
     );
 
-    // Drinks
     const drinksObserver = observeOnce(
       drinksRef.current,
       () => setDrinksVisible(true),
       {
-        threshold: 0.15,
-        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.1,
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
-    // Desserts
     const dessertsObserver = observeOnce(
       dessertsRef.current,
       () => setDessertsVisible(true),
       {
-        threshold: 0.12,
-        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.1,
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
@@ -143,7 +140,7 @@ export default function SpecialMenu() {
           <p
             className={`
               mb-5 text-sm tracking-[0.35em] text-white/60
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
@@ -158,15 +155,15 @@ export default function SpecialMenu() {
           <p
             className={`
               text-sm tracking-[0.35em] text-white/70
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0"
+                  : "translate-y-3 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "100ms",
+              transitionDelay: "50ms",
             }}
           >
             SPECIAL MENU
@@ -176,15 +173,15 @@ export default function SpecialMenu() {
           <h3
             className={`
               mt-3 text-3xl font-bold md:text-4xl
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+                  : "translate-y-5 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "200ms",
+              transitionDelay: "100ms",
             }}
           >
             六週年主題客製化餐飲
@@ -195,15 +192,15 @@ export default function SpecialMenu() {
             className={`
               mt-8 max-w-2xl
               text-base leading-8 text-white/80 md:text-lg
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
+                  : "translate-y-4 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "380ms",
+              transitionDelay: "160ms",
             }}
           >
             四位英雄，四款飲品。四道光環，四種點心。
@@ -224,11 +221,11 @@ export default function SpecialMenu() {
             className={`
               mb-8 flex items-end justify-between
               border-b border-white/30 pb-5
-              transition-all duration-800 ease-out
+              transition-all duration-400 ease-out
               ${
                 drinksVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0"
+                  : "translate-y-3 opacity-0"
               }
             `}
           >
@@ -253,15 +250,15 @@ export default function SpecialMenu() {
               <div
                 key={item.name}
                 className={`
-                  transition-all duration-1000 ease-out
+                  transition-all duration-500 ease-out
                   ${
                     drinksVisible
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-6 opacity-0"
+                      : "translate-y-4 opacity-0"
                   }
                 `}
                 style={{
-                  transitionDelay: `${180 + index * 110}ms`,
+                  transitionDelay: `${80 + index * 55}ms`,
                 }}
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
@@ -299,7 +296,7 @@ export default function SpecialMenu() {
             className={`
               mt-10 max-w-3xl
               text-sm leading-7 text-white/65
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 drinksVisible
                   ? "translate-y-0 opacity-100"
@@ -307,7 +304,7 @@ export default function SpecialMenu() {
               }
             `}
             style={{
-              transitionDelay: "700ms",
+              transitionDelay: "320ms",
             }}
           >
             飲品為來店低消。凡購買一款飲品，即可獲得飲品對應之
@@ -326,11 +323,11 @@ export default function SpecialMenu() {
             className={`
               mb-8 flex items-end justify-between
               border-b border-white/30 pb-5
-              transition-all duration-800 ease-out
+              transition-all duration-400 ease-out
               ${
                 dessertsVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0"
+                  : "translate-y-3 opacity-0"
               }
             `}
           >
@@ -355,15 +352,15 @@ export default function SpecialMenu() {
               <div
                 key={item.name}
                 className={`
-                  transition-all duration-1000 ease-out
+                  transition-all duration-500 ease-out
                   ${
                     dessertsVisible
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-6 opacity-0"
+                      : "translate-y-4 opacity-0"
                   }
                 `}
                 style={{
-                  transitionDelay: `${180 + index * 110}ms`,
+                  transitionDelay: `${80 + index * 55}ms`,
                 }}
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
@@ -397,7 +394,7 @@ export default function SpecialMenu() {
             className={`
               mt-10 max-w-3xl
               text-sm leading-7 text-white/65
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 dessertsVisible
                   ? "translate-y-0 opacity-100"
@@ -405,7 +402,7 @@ export default function SpecialMenu() {
               }
             `}
             style={{
-              transitionDelay: "700ms",
+              transitionDelay: "320ms",
             }}
           >
             甜點不列入低消。凡滿足低消，加購甜點享有 20 元折扣。
@@ -420,7 +417,7 @@ export default function SpecialMenu() {
         <div
           className={`
             mt-20 border-t border-white/30 pt-8
-            transition-all duration-700 ease-out
+            transition-all duration-400 ease-out
             ${
               dessertsVisible
                 ? "translate-y-0 opacity-100"
@@ -428,7 +425,7 @@ export default function SpecialMenu() {
             }
           `}
           style={{
-            transitionDelay: "850ms",
+            transitionDelay: "380ms",
           }}
         >
           <div className="space-y-2 text-xs leading-6 text-white/70">

@@ -33,8 +33,8 @@ export default function OnlineProject() {
       sectionRef.current,
       () => setSectionVisible(true),
       {
-        threshold: 0.2,
-        rootMargin: "0px 0px -15% 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 
@@ -42,8 +42,8 @@ export default function OnlineProject() {
       saveRef.current,
       () => setSaveVisible(true),
       {
-        threshold: 0.25,
-        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
@@ -70,7 +70,7 @@ export default function OnlineProject() {
           <p
             className={`
               mb-5 text-sm tracking-[0.35em] text-white/60
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
@@ -85,15 +85,15 @@ export default function OnlineProject() {
           <p
             className={`
               text-sm tracking-[0.35em] text-white/70
-              transition-all duration-700 ease-out
+              transition-all duration-400 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0"
+                  : "translate-y-3 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "100ms",
+              transitionDelay: "50ms",
             }}
           >
             ONLINE PROJECT
@@ -103,21 +103,20 @@ export default function OnlineProject() {
           <h3
             className={`
               mt-3 text-3xl font-bold md:text-4xl
-              transition-all duration-1000 ease-out
+              transition-all duration-500 ease-out
               ${
                 sectionVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
+                  : "translate-y-5 opacity-0"
               }
             `}
             style={{
-              transitionDelay: "200ms",
+              transitionDelay: "100ms",
             }}
           >
             線上企劃
           </h3>
         </div>
-
 
         {/* ========================================
             SAVE
@@ -136,11 +135,11 @@ export default function OnlineProject() {
           {/* SAVE Title */}
           <div
             className={`
-              transition-all duration-800 ease-out
+              transition-all duration-400 ease-out
               ${
                 saveVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
+                  : "translate-y-4 opacity-0"
               }
             `}
           >
@@ -153,22 +152,21 @@ export default function OnlineProject() {
             </h4>
           </div>
 
-
           {/* SAVE Content */}
           <div>
             <p
               className={`
                 max-w-2xl
                 text-base leading-8 text-white/80
-                transition-all duration-900 ease-out
+                transition-all duration-400 ease-out
                 ${
                   saveVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
               style={{
-                transitionDelay: "120ms",
+                transitionDelay: "60ms",
               }}
             >
               活動結束後，歡迎留下你對本次六週年應援企劃的感想與建議。
@@ -178,15 +176,15 @@ export default function OnlineProject() {
               className={`
                 mt-5 max-w-2xl
                 text-sm leading-7 text-white/60
-                transition-all duration-900 ease-out
+                transition-all duration-500 ease-out
                 ${
                   saveVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
+                    : "translate-y-4 opacity-0"
                 }
               `}
               style={{
-                transitionDelay: "240ms",
+                transitionDelay: "120ms",
               }}
             >
               完成指定回饋方式即可參與抽獎。
@@ -199,15 +197,15 @@ export default function OnlineProject() {
                 mt-10 inline-flex
                 border border-white/30
                 px-5 py-3
-                transition-all duration-900 ease-out
+                transition-all duration-500 ease-out
                 ${
                   saveVisible
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
+                    : "translate-y-3 opacity-0"
                 }
               `}
               style={{
-                transitionDelay: "400ms",
+                transitionDelay: "180ms",
               }}
             >
               <span className="text-xs tracking-[0.25em] text-white/60">

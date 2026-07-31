@@ -58,7 +58,7 @@ export default function ProjectTeam() {
               `}
             >
               <Image
-                src="/images/anniversary/team/PROJECT-AD98.png"
+                src="/images/anniversary/team/PROJECT-AD98V2.png"
                 alt="PROJECT.AD98"
                 fill
                 className="object-contain"
