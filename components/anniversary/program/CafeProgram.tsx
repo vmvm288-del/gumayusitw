@@ -46,9 +46,7 @@ export default function CafeProgram() {
 
     observer.observe(section);
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -58,118 +56,35 @@ export default function CafeProgram() {
     >
       <div className="mx-auto max-w-6xl px-6 pb-28">
 
-        {/* Chapter Header */}
+        {/* Header */}
         <div className="overflow-hidden border-t border-[#241f35]/30 pt-10">
 
-          {/* Number */}
           <p
             className={`
-              mb-5 text-sm tracking-[0.35em] text-[#241f35]/60
-              transition-all duration-400 ease-out
+              mb-5
+              text-sm
+              tracking-[0.35em]
+              text-[#241f35]/60
+              transition-all
+              duration-500
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-3 opacity-0"
+                  : "translate-y-4 opacity-0"
               }
             `}
           >
             01
           </p>
 
-          {/* English Title */}
           <p
             className={`
-              text-sm uppercase tracking-[0.35em] text-[#241f35]/70
-              transition-all duration-400 ease-out
-              ${
-                isVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-3 opacity-0"
-              }
-            `}
-            style={{
-              transitionDelay: "50ms",
-            }}
-          >
-            ANNIVERSARY CAFE
-          </p>
-
-          {/* Chinese Title */}
-          <h3
-            className={`
-              mt-3 text-3xl font-bold md:text-4xl
-              transition-all duration-500 ease-out
-              ${
-                isVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
-              }
-            `}
-            style={{
-              transitionDelay: "100ms",
-            }}
-          >
-            咖啡廳佈置
-          </h3>
-        </div>
-
-        {/* Cafe Items */}
-        <div className="relative mt-14 grid gap-x-12 md:grid-cols-2">
-          {cafeItems.map((item, index) => (
-            <div
-              key={item.code}
-              className={`
-                border-t border-[#241f35]/30 py-8
-                transition-all duration-500 ease-out
-                ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }
-              `}
-              style={{
-                transitionDelay: `${160 + index * 55}ms`,
-              }}
-            >
-              <p className="text-sm font-semibold tracking-[0.25em]">
-                {item.code}
-              </p>
-
-              <p className="mt-3 text-lg text-[#241f35]/80">
-                {item.title}
-              </p>
-            </div>
-          ))}
-
-          {/* Photo Contest Entry */}
-          <Link
-            href="/submit"
-            className={`
-              group
-              photo-contest-card
-              relative
-              mt-8
-              flex
-              aspect-square
-              w-44
-              flex-col
-              justify-between
-              overflow-hidden
-              border
-              border-[#241f35]/40
-              p-5
-
+              text-sm
+              uppercase
+              tracking-[0.35em]
+              text-[#241f35]/70
               transition-all
               duration-500
-              ease-out
-
-              hover:border-[#241f35]/70
-
-              md:absolute
-              md:left-[calc(100%+48px)]
-              md:top-16
-              md:mt-0
-
               ${
                 isVisible
                   ? "translate-y-0 opacity-100"
@@ -177,54 +92,196 @@ export default function CafeProgram() {
               }
             `}
             style={{
-              transitionDelay: "380ms",
+              transitionDelay: "60ms",
             }}
           >
-            {/* IDOL */}
-            <div className="flex items-start justify-between">
-              <span className="text-xs font-bold tracking-[0.3em]">
-                IDOL
-              </span>
+            ANNIVERSARY CAFE
+          </p>
 
-              <span className="contest-sparkle contest-sparkle-1 text-sm leading-none">
-                ✦
-              </span>
-            </div>
+          <h3
+            className={`
+              mt-3
+              text-3xl
+              font-bold
+              md:text-4xl
+              transition-all
+              duration-500
+              ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-5 opacity-0"
+              }
+            `}
+            style={{
+              transitionDelay: "120ms",
+            }}
+          >
+            咖啡廳佈置
+          </h3>
 
-            {/* Contest Link */}
-            <div>
-              <p className="text-[10px] font-semibold tracking-[0.28em] opacity-60">
-                PHOTO CONTEST
+        </div>
+
+        {/* Content */}
+        <div className="relative mt-[-150px]">
+                <Link
+                  href="/submit"
+                  className={`
+                    group
+                    photo-contest-card
+
+                    absolute
+                    -top-0
+                    right-[-900px]
+                    z-10
+
+                    flex
+                    h-[170px]
+                    w-[170px]
+                    flex-col
+                    items-center
+                    justify-center
+
+                    rounded-full
+
+                    bg-gradient-to-br
+                    from-[#7f73c8]
+                    via-[#887dd6]
+                    to-[#9b90e5]
+
+                    text-white
+
+                    shadow-[0_18px_45px_rgba(126,116,204,.28)]
+
+                    transition-all
+                    duration-500
+                    ease-out
+
+                    hover:-translate-y-2
+                    hover:scale-[1.04]
+
+                    ${
+                      isVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }
+                  `}
+                  style={{
+                    transitionDelay: "380ms",
+                  }}
+                >
+                  <span
+                    className="
+                      contest-sparkle
+                      contest-sparkle-1
+                      absolute
+                      left-8
+                      top-8
+                      text-xl
+                      text-[#fff5dd]
+                    "
+                  >
+                    ✦
+                  </span>
+
+                  <span
+                    className="
+                      contest-sparkle
+                      contest-sparkle-2
+                      absolute
+                      right-8
+                      bottom-14
+                      text-sm
+                      text-[#fff5dd]
+                    "
+                  >
+                    ✦
+                  </span>
+
+                  <p className="text-[11px] tracking-[0.32em] text-white/70">
+                    IDOL
+                  </p>
+
+                  <h4 className="mt-2 text-[18px] font-bold tracking-[0.08em]">
+                    參賽投稿
+                  </h4>
+
+                  <span
+                    className="
+                      mt-5
+                      text-3xl
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                      group-hover:-translate-y-1
+                    "
+                  >
+                    ↗
+                  </span>
+                </Link>
+
+        {/* Item Grid */}
+        <div
+          className="
+            grid
+            gap-x-14
+            gap-y-10
+
+            md:grid-cols-2
+           md:auto-rows-min
+
+          "
+        >
+                    {cafeItems.map((item, index) => (
+            <div
+              key={item.code}
+              className={`
+                relative
+                border-t
+                border-[#241f35]/30
+                pt-4
+                pb-0
+
+                transition-all
+                duration-500
+                ease-out
+
+                ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }
+              `}
+              style={{
+                transitionDelay: `${360 + index * 70}ms`,
+              }}
+            >
+              <p
+                className="
+                  text-sm
+                  font-semibold
+                  tracking-[0.25em]
+                  text-[#241f35]
+                "
+              >
+                {item.code}
               </p>
 
-              <div className="mt-3 flex items-end justify-between gap-3">
-                <span className="text-lg font-bold tracking-[0.08em]">
-                  參賽投稿
-                </span>
+              <p
+                className="
+                  mt-3
+                  text-lg
+                  text-[#241f35]/80
+                "
+              >
+                {item.title}
+              </p>
 
-                <span
-                  className="
-                    text-lg
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                    group-hover:-translate-y-1
-                  "
-                >
-                  ↗
-                </span>
-              </div>
+        
             </div>
-
-            <span className="contest-sparkle contest-sparkle-2 absolute left-5 top-1/2 text-[9px]">
-              ✦
-            </span>
-
-            <span className="contest-sparkle contest-sparkle-3 absolute bottom-5 right-5 text-[7px]">
-              ✦
-            </span>
-          </Link>
+          ))}
         </div>
+          </div>
+
       </div>
     </section>
   );
