@@ -18,6 +18,7 @@ export default function SubmitFormPage() {
   consent: false,
 });
 const [loading, setLoading] = useState(false);
+const [submitted, setSubmitted] = useState(false);
 const fileInputRef = useRef<HTMLInputElement>(null);
 const handleChange = (
   e: React.ChangeEvent<
@@ -156,7 +157,7 @@ const handleSubmit = async () => {
 
 }
 
-    alert("投稿成功！");
+    setSubmitted(true);
 
     setForm({
       nickname: "",
@@ -190,6 +191,44 @@ const handleSubmit = async () => {
     setLoading(false);
   }
 };
+if (submitted) {
+  return (
+    <main className="min-h-screen bg-[#f0b0a0] text-[#241f35]">
+      <div className="mx-auto flex min-h-screen max-w-3xl items-center justify-center px-6">
+
+        <div className="w-full border border-[#241f35]/20 bg-transparent p-12 text-center">
+
+          <p className="text-xs uppercase tracking-[0.35em] opacity-50">
+            PROJECT. AD98
+          </p>
+
+          <h1 className="mt-6 text-4xl font-bold">
+            投稿成功
+          </h1>
+
+          <p className="mt-3 text-sm uppercase tracking-[0.3em] opacity-60">
+            Submission Received
+          </p>
+
+          <p className="mt-10 leading-8 text-[#241f35]/75">
+            您的作品已成功送出。<br />
+            請耐心等候主辦團隊審核，<br />
+            審核結果將以 Email 通知。
+          </p>
+
+          <a
+            href="/projects/6th-anniversary"
+            className="mt-12 inline-flex border border-[#241f35] px-8 py-4 text-sm font-semibold uppercase tracking-[0.25em] transition hover:bg-[#241f35] hover:text-[#f0b0a0]"
+          >
+            返回活動首頁
+          </a>
+
+        </div>
+
+      </div>
+    </main>
+  );
+}
   return (
     <main className="min-h-screen bg-[#f0b0a0] text-[#241f35]">
       <div className="mx-auto max-w-5xl px-6 py-24">
