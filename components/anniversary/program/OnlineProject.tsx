@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ComingSoonGlass from "@/components/anniversary/program/ComingSoonGlass";
 
 export default function OnlineProject() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -153,6 +154,7 @@ export default function OnlineProject() {
           </div>
 
           {/* SAVE Content */}
+          <ComingSoonGlass>
           <div>
             <p
               className={`
@@ -213,7 +215,7 @@ export default function OnlineProject() {
               </span>
             </div>
           </div>
-
+</ComingSoonGlass>
         </div>
 
       </div>

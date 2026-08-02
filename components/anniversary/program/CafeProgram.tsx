@@ -122,19 +122,27 @@ export default function CafeProgram() {
         </div>
 
         {/* Content */}
-        <div className="relative mt-[-150px]">
+        <div className="relative mt-10 md:mt-[-150px]">
                 <Link
                   href="/submit"
                   className={`
-                    group
-                    photo-contest-card
+                     hidden
+                     md:flex
 
-                    absolute
-                    -top-0
-                    right-[-900px]
-                    z-10
+  group
+  photo-contest-card
 
-                    flex
+  absolute
+  top-0
+  right-[-900px]
+
+  z-10
+
+  h-[170px]
+  w-[170px]
+  flex-col
+  items-center
+  justify-center
                     h-[170px]
                     w-[170px]
                     flex-col
@@ -276,7 +284,7 @@ export default function CafeProgram() {
                 {item.title}
               </p>
 
-        
+      
             </div>
           ))}
         </div>

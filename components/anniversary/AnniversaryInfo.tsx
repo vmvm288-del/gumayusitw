@@ -151,14 +151,19 @@ export default function AnniversaryInfo() {
           <div
             className={`
               relative
-              z-10
+  z-10
 
-              flex
-              items-center
-              gap-5
+  flex
+  flex-col
+  items-start
+  gap-3
 
-              transition-all
-              duration-500
+  md:flex-row
+  md:items-center
+  md:gap-5
+
+  transition-all
+  duration-500
 
               ${
                 isVisible
@@ -217,35 +222,61 @@ export default function AnniversaryInfo() {
                 2026
               </p>
 
-              <div className="mt-4 flex items-end gap-6">
+              <div
+  className="
+    mt-4
 
-                <div>
+    flex
+    flex-col
+    gap-8
 
-                  <p className="text-5xl font-bold leading-none md:text-7xl">
-                    09.05
-                  </p>
+    sm:flex-row
+    sm:items-end
+    sm:gap-6
+  "
+>
 
-                  <p className="mt-3 text-sm tracking-[0.35em] text-[#f3b4a5]">
-                    SATURDAY
-                  </p>
+                <div className="text-center sm:text-left">
 
-                </div>
+  <p className="text-4xl font-bold leading-none sm:text-5xl md:text-7xl">
+    09.05
+  </p>
 
-                <span className="mb-3 text-4xl font-light text-[#f3b4a5]/70">
-                  —
-                </span>
+  <p className="mt-3 text-xs tracking-[0.28em] text-[#f3b4a5] sm:text-sm sm:tracking-[0.35em]">
+    SATURDAY
+  </p>
 
-                <div>
+</div>
 
-                  <p className="text-5xl font-bold leading-none md:text-7xl">
-                    09.09
-                  </p>
+<div
+  className="
+    hidden
+    sm:flex
 
-                  <p className="mt-3 text-sm tracking-[0.35em] text-[#f3b4a5]">
-                    WEDNESDAY
-                  </p>
+    items-center
+    justify-center
 
-                </div>
+    mb-12
+
+    text-4xl
+    font-light
+    text-[#f3b4a5]/70
+  "
+>
+  —
+</div>
+
+<div className="text-center sm:text-left">
+
+  <p className="text-4xl font-bold leading-none sm:text-5xl md:text-7xl">
+    09.09
+  </p>
+
+  <p className="mt-3 text-xs tracking-[0.28em] text-[#f3b4a5] sm:text-sm sm:tracking-[0.35em]">
+    WEDNESDAY
+  </p>
+
+</div>
 
               </div>
 
@@ -257,7 +288,7 @@ export default function AnniversaryInfo() {
                   EVENT PERIOD
                 </p>
 
-                <p className="mt-4 text-3xl font-semibold tracking-wide">
+                <p className="mt-4 text-2xl md:text-3xl font-semibold tracking-wide">
                   11:00 — 19:00
                 </p>
 
@@ -349,7 +380,7 @@ export default function AnniversaryInfo() {
                 VENUE
               </p>
 
-              <p className="mt-5 text-3xl font-semibold">
+              <p className="mt-5 text-2xl md:text-3xl font-semibold">
                 愛豆應援咖啡
               </p>
 
@@ -425,11 +456,15 @@ export default function AnniversaryInfo() {
 
                   <span
                     className="
-                      text-lg
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
+text-[11px]
+
+tracking-[0.18em]
+
+sm:text-xs
+sm:tracking-[0.28em]
+
+text-[#f3b4a5]
+"
                   >
                     ↗
                   </span>
@@ -473,23 +508,30 @@ export default function AnniversaryInfo() {
                   <div
                     className="
                       mt-8
-                      flex
-                      items-center
-                      justify-between
 
-                      rounded-full
+flex
+flex-col
+gap-4
 
-                      border
-                      border-[#f3b4a5]/40
+rounded-3xl
 
-                      px-5
-                      py-4
+border
+border-[#f3b4a5]/40
 
-                      transition-all
-                      duration-300
+px-5
+py-4
 
-                      hover:border-[#f3b4a5]
-                      hover:bg-[#f3b4a5]/10
+transition-all
+duration-300
+
+sm:flex-row
+sm:items-center
+sm:justify-between
+
+sm:rounded-full
+
+hover:border-[#f3b4a5]
+hover:bg-[#f3b4a5]/10
                     "
                   >
 
@@ -531,18 +573,23 @@ export default function AnniversaryInfo() {
           <div
             className={`
               relative
-              z-10
+z-10
 
-              mt-14
+mt-14
 
-              flex
-              items-center
-              gap-5
+flex
+flex-col
+items-start
+gap-3
 
-              border-t
-              border-white/15
+border-t
+border-white/15
 
-              pt-7
+pt-7
+
+md:flex-row
+md:items-center
+md:gap-5
 
               transition-all
               duration-500

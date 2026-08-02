@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import ComingSoonGlass from "@/components/anniversary/program/ComingSoonGlass";
+
 
 const drinks = [
   {
@@ -216,6 +218,8 @@ export default function SpecialMenu() {
 
         <div ref={drinksRef} className="mt-20">
 
+          
+
           {/* Drinks Header */}
           <div
             className={`
@@ -243,8 +247,10 @@ export default function SpecialMenu() {
               04 SELECTIONS
             </p>
           </div>
+          
 
           {/* Drink Cards */}
+          <ComingSoonGlass>
           <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {drinks.map((item, index) => (
               <div
@@ -287,7 +293,9 @@ export default function SpecialMenu() {
                     {item.type}
                   </p>
                 </div>
+                
               </div>
+            
             ))}
           </div>
 
@@ -310,7 +318,9 @@ export default function SpecialMenu() {
             飲品為來店低消。凡購買一款飲品，即可獲得飲品對應之
             「特製貼紙」特典。
           </p>
+          </ComingSoonGlass>
         </div>
+        
 
         {/* ========================================
             DESSERTS
@@ -346,12 +356,14 @@ export default function SpecialMenu() {
             </p>
           </div>
 
-          {/* Dessert Cards */}
-          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {desserts.map((item, index) => (
-              <div
-                key={item.name}
-                className={`
+          
+            {/* Dessert Cards */}
+            <ComingSoonGlass>
+            <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+              {desserts.map((item, index) => (
+                <div
+                  key={item.name}
+                  className={`
                   transition-all duration-500 ease-out
                   ${
                     dessertsVisible
@@ -408,6 +420,7 @@ export default function SpecialMenu() {
             甜點不列入低消。凡滿足低消，加購甜點享有 20 元折扣。
             每份甜點附有對應「裝飾小卡」。
           </p>
+          </ComingSoonGlass>
         </div>
 
         {/* ========================================

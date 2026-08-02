@@ -1,6 +1,8 @@
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ComingSoonGlass from "@/components/anniversary/program/ComingSoonGlass";
 
 const prizes = [
   {
@@ -191,6 +193,8 @@ export default function FanSupport() {
           </div>
 
           {/* CODE Content */}
+          <ComingSoonGlass>
+
           <div>
             <p
               className={`
@@ -235,6 +239,7 @@ export default function FanSupport() {
                 </p>
               </div>
 
+
               {/* Coaster */}
               <div
                 className={`
@@ -262,6 +267,8 @@ export default function FanSupport() {
               </div>
             </div>
 
+
+
             <p
               className={`
                 mt-6 text-sm leading-7 text-[#241f35]/60
@@ -278,6 +285,7 @@ export default function FanSupport() {
               杯墊準備數量僅 200 個，若發放完畢則改為發放小貼紙。
             </p>
           </div>
+          </ComingSoonGlass>
         </div>
 
         {/* ========================================
@@ -350,7 +358,7 @@ export default function FanSupport() {
           {/* ========================================
               PRIZE POOL
           ======================================== */}
-
+<ComingSoonGlass>
           <div
             className={`
               mt-16
@@ -416,13 +424,14 @@ export default function FanSupport() {
               ))}
             </div>
           </div>
+          </ComingSoonGlass>
 
           {/* ========================================
               POOL RULES
           ======================================== */}
 
           <div className="mt-16 grid gap-6 md:grid-cols-2">
-
+<ComingSoonGlass>
             {/* Carry Over */}
             <div
               className={`
@@ -449,8 +458,9 @@ export default function FanSupport() {
                 「匯入隔日獎池」，驚喜持續累積。
               </p>
             </div>
-
+</ComingSoonGlass>
             {/* Guarantee */}
+            <ComingSoonGlass>
             <div
               className={`
                 border border-[#241f35]/30 p-7
@@ -476,7 +486,7 @@ export default function FanSupport() {
                 後續抽選將全面改為贈送「文字中性筆」乙支。
               </p>
             </div>
-
+</ComingSoonGlass>
           </div>
 
           {/* Notes */}
@@ -529,6 +539,7 @@ export default function FanSupport() {
             </div>
 
             {/* Departure Content */}
+            <ComingSoonGlass>
             <div
               className={`
                 transition-all duration-500 ease-out
@@ -553,6 +564,7 @@ export default function FanSupport() {
                 本活動僅於 2026 年 9 月 8 日 Gumayusi 出道紀念日當日進行。
               </p>
             </div>
+            </ComingSoonGlass>
           </div>
         </div>
 
