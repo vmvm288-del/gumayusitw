@@ -250,7 +250,7 @@ export default function SpecialMenu() {
           
 
           {/* Drink Cards */}
-          <ComingSoonGlass>
+          
           <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {drinks.map((item, index) => (
               <div
@@ -267,14 +267,36 @@ export default function SpecialMenu() {
                   transitionDelay: `${80 + index * 55}ms`,
                 }}
               >
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={`${item.name} ${item.zh}`}
-                    fill
-                    className="object-cover transition duration-500 hover:scale-105"
-                  />
-                </div>
+                <div className="relative aspect-[4/5]">
+
+  {/* 圖片 */}
+  <div className="h-full overflow-hidden">
+    <Image
+      src={item.image}
+      alt={`${item.name} ${item.zh}`}
+      fill
+      className="object-cover transition duration-500 hover:scale-105"
+    />
+  </div>
+
+  {/* 貼紙特典 */}
+  <Image
+    src="/icon/drinkv2.png"
+    alt="貼紙特典"
+    width={100}
+    height={100}
+    className="
+      absolute
+      -bottom-4
+      right-0
+      z-20
+      drop-shadow-md
+      pointer-events-none
+      select-none
+    "
+  />
+
+</div>
 
                 <div className="mt-5">
                   <p className="text-xs tracking-[0.18em] text-white/60">
@@ -318,7 +340,7 @@ export default function SpecialMenu() {
             飲品為來店低消。凡購買一款飲品，即可獲得飲品對應之
             「特製貼紙」特典。
           </p>
-          </ComingSoonGlass>
+         
         </div>
         
 
@@ -358,7 +380,7 @@ export default function SpecialMenu() {
 
           
             {/* Dessert Cards */}
-            <ComingSoonGlass>
+            
             <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               {desserts.map((item, index) => (
                 <div
@@ -375,14 +397,36 @@ export default function SpecialMenu() {
                   transitionDelay: `${80 + index * 55}ms`,
                 }}
               >
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={`${item.name} ${item.zh}`}
-                    fill
-                    className="object-cover transition duration-500 hover:scale-105"
-                  />
-                </div>
+                <div className="relative aspect-[4/5]">
+
+  {/* 圖片 */}
+  <div className="h-full overflow-hidden">
+    <Image
+      src={item.image}
+      alt={`${item.name} ${item.zh}`}
+      fill
+      className="object-cover transition duration-500 hover:scale-105"
+    />
+  </div>
+
+  {/* 小卡特典 */}
+  <Image
+    src="/icon/dessert.png"
+    alt="小卡特典"
+    width={110}
+    height={110}
+    className="
+      absolute
+      -bottom-5
+      -right-0
+      z-20
+      drop-shadow-md
+      pointer-events-none
+      select-none
+    "
+  />
+
+</div>
 
                 <div className="mt-5">
                   <h5 className="text-lg font-bold tracking-wide">
@@ -420,7 +464,7 @@ export default function SpecialMenu() {
             甜點不列入低消。凡滿足低消，加購甜點享有 20 元折扣。
             每份甜點附有對應「裝飾小卡」。
           </p>
-          </ComingSoonGlass>
+          
         </div>
 
         {/* ========================================
