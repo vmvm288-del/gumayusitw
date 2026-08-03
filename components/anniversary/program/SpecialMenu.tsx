@@ -289,6 +289,14 @@ export default function SpecialMenu() {
       absolute
       -bottom-4
       right-0
+
+       w-[56px]
+    sm:w-[64px]
+    md:w-[80px]
+    lg:w-[96px]
+
+    h-auto
+    
       z-20
       drop-shadow-md
       pointer-events-none
@@ -419,6 +427,14 @@ export default function SpecialMenu() {
       absolute
       -bottom-5
       -right-0
+
+       w-[56px]
+    sm:w-[64px]
+    md:w-[80px]
+    lg:w-[96px]
+
+    h-auto
+
       z-20
       drop-shadow-md
       pointer-events-none
