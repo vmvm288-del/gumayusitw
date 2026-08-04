@@ -33,7 +33,7 @@ export default function AnniversaryInfo() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#8177c9] px-6 py-24 text-white"
+      className="w-full bg-[#8177c9] px-6 py-20 lg:py-24 text-white"
     >
       <div className="mx-auto max-w-6xl">
 
@@ -41,14 +41,13 @@ export default function AnniversaryInfo() {
             SECTION TITLE
         ========================= */}
 
-        <div className="mb-14 overflow-hidden">
-
+      <div className="mb-12 lg:mb-14 overflow-hidden">
           <p
             className={`
               mb-3
               text-sm
               uppercase
-              tracking-[0.4em]
+              tracking-[0.32em]
               text-[#f3b4a5]/80
               transition-all
               duration-500
@@ -59,12 +58,12 @@ export default function AnniversaryInfo() {
               }
             `}
           >
-            EVENT INFO
+            EVENT INFOMATION
           </p>
 
           <h2
             className={`
-              text-4xl
+              text-[2.3rem]
               font-bold
               tracking-wide
               md:text-5xl
@@ -97,12 +96,13 @@ export default function AnniversaryInfo() {
             overflow-hidden
 
             border
-            border-white/20
+            border-white/15
 
-            bg-white/[0.06]
+            bg-white/[0.05]
+            backdrop-blur-sm
 
-            px-8
-            py-10
+            px-6
+            py-8
 
             md:px-12
             md:py-12
@@ -128,19 +128,19 @@ export default function AnniversaryInfo() {
             className="
               pointer-events-none
               absolute
-              -bottom-12
-              -right-3
+              -bottom-8
+              -right-2
 
               select-none
 
-              text-[180px]
+              text-[150px]
               font-black
               tracking-[-0.08em]
               leading-none
 
-              text-white/[0.04]
+              text-[#f3b4a5]/8
 
-              md:text-[300px]
+              lg:text-[260px]
             "
           >
             98
@@ -151,19 +151,19 @@ export default function AnniversaryInfo() {
           <div
             className={`
               relative
-  z-10
+              z-10
 
-  flex
-  flex-col
-  items-start
-  gap-3
+              flex
+              flex-col
+              items-start
+              gap-2
 
-  md:flex-row
-  md:items-center
-  md:gap-5
+              md:flex-row
+              md:items-center
+              md:gap-5
 
-  transition-all
-  duration-500
+              transition-all
+              duration-500
 
               ${
                 isVisible
@@ -173,13 +173,13 @@ export default function AnniversaryInfo() {
             `}
           >
 
-            <p className="text-xs tracking-[0.4em] text-[#f3b4a5]/80">
+            <p className="text-sm tracking-base text-[#f3b4a5]/90 font-medium">
               GUMAYUSI 6TH DEBUT ANNIVERSARY
             </p>
 
-            <div className="h-px flex-1 bg-white/15" />
+            <div className="h-px flex-1 bg-white/10" />
 
-            <p className="hidden text-xs tracking-[0.3em] text-white/40 md:block">
+            <p className="hidden text-sm tracking-[0.18em] text-white/55 md:block">
               TAIPEI · 2026
             </p>
 
@@ -214,29 +214,13 @@ export default function AnniversaryInfo() {
 
               {/* DATE */}
 
-              <p className="text-xs tracking-[0.35em] text-[#f3b4a5]/80">
+              <p className="text-sm tracking-[0.35em] text-[#f3b4a5]/80">
                 DATE
               </p>
 
-              <p className="mt-5 text-lg tracking-[0.3em] text-white/55">
-                2026
-              </p>
+              <div className="mt-4 flex flex-col gap-8 sm:flex-row sm:items-end sm:gap-6">
 
-              <div
-  className="
-    mt-4
-
-    flex
-    flex-col
-    gap-8
-
-    sm:flex-row
-    sm:items-end
-    sm:gap-6
-  "
->
-
-                <div className="text-center sm:text-left">
+              <div className="text-center sm:text-left">
 
   <p className="text-4xl font-bold leading-none sm:text-5xl md:text-7xl">
     09.05
@@ -282,19 +266,15 @@ export default function AnniversaryInfo() {
 
               {/* EVENT */}
 
-              <div className="mt-12 border-t border-white/15 pt-8">
+              <div className="mt-12 ">
 
-                <p className="text-xs tracking-[0.35em] text-[#f3b4a5]/80">
-                  EVENT PERIOD
-                </p>
+
 
                 <p className="mt-4 text-2xl md:text-3xl font-semibold tracking-wide">
                   11:00 — 19:00
                 </p>
 
-                <p className="mt-2 text-sm text-white/55">
-                  September 05 — September 09
-                </p>
+
 
               </div>
 
@@ -302,8 +282,8 @@ export default function AnniversaryInfo() {
 
               <div className="mt-12 border-t border-white/15 pt-8">
 
-                <p className="text-xs tracking-[0.35em] text-[#f3b4a5]/80">
-                  ENTRY
+                <p className="text-base tracking-[0.35em] text-[#f3b4a5]/80">
+                  入場方式 ENTRY
                 </p>
 
                 {/* Reservation */}
@@ -311,10 +291,10 @@ export default function AnniversaryInfo() {
                 <div className="mt-7 rounded-sm border border-white/10 bg-white/[0.03] p-6">
 
                   <p className="text-lg font-semibold">
-                    預約入場
+                    預約、候位入場
                   </p>
 
-                  <p className="mt-1 text-sm text-white/50">
+                  <p className="mt-1 text-base text-white/50">
                     09/05（六）— 09/06（日）
                   </p>
 
@@ -322,6 +302,8 @@ export default function AnniversaryInfo() {
                     每小時整點開放 20 人預約。
                     <br />
                     每次用餐時間 50 分鐘。
+                    <br />
+                    每時段另開放5位現場候位進場；若僅外帶則不再此限。
                   </p>
 
                 </div>
@@ -334,7 +316,7 @@ export default function AnniversaryInfo() {
                     自由入場
                   </p>
 
-                  <p className="mt-1 text-sm text-white/50">
+                  <p className="mt-1 text-base text-white/50">
                     09/07（一）— 09/09（三）
                   </p>
 
@@ -349,9 +331,23 @@ export default function AnniversaryInfo() {
 
                     09/09（三）營業至 18:30。
                   </p>
+                  </div>
+                <div className="mt-5 rounded-sm border border-white/10 bg-white/[0.03] p-6">
 
-                </div>
+                  <p className="text-lg font-semibold">
+                    現場須知
+                  </p>
 
+                  <p className="mt-4 text-sm leading-7 text-white/80">
+                    應援領取：點餐後請持櫃檯發放之號碼牌與明細，移步至主辦桌領取應援特典。
+                    <br />
+                    觀展與攝影：全區歡迎拍照，禁止使用閃光燈，避免長時間占用熱門打卡區域。
+                    <br />
+                    注意事項：非營業時間請勿在店外滯留，現場嚴禁任何私下商業交易行為。
+                  </p>
+
+                
+</div>
               </div>
 
             </div>
@@ -384,9 +380,7 @@ export default function AnniversaryInfo() {
                 愛豆應援咖啡
               </p>
 
-              <p className="mt-2 text-base text-white/70">
-                .IDOL coffee
-              </p>
+
 
               <p className="mt-1 text-sm tracking-[0.15em] text-[#f3b4a5]/80">
                 Taipei, Taiwan
@@ -397,17 +391,17 @@ export default function AnniversaryInfo() {
               <div className="mt-8 rounded-sm border border-white/10 bg-white/[0.03] p-5">
 
                 <p className="text-xs tracking-[0.3em] text-[#f3b4a5]/80">
-                  ACCESS
+                  前往方式 ACCESS
                 </p>
 
                 <div className="mt-4 space-y-2 text-sm leading-7 text-white/75">
 
                   <p>
-                    MRT Zhongxiao Xinsheng Station
+                    台北車站
                   </p>
 
                   <p>
-                    Exit 1 · About 3 min walk
+                    一號出口，步行約五分鐘
                   </p>
 
                 </div>
@@ -496,7 +490,7 @@ text-[#f3b4a5]
                   </p>
 
                   <h4 className="mt-4 text-2xl font-bold leading-snug">
-                    Reserve Your Visit
+                    預約填單
                   </h4>
 
                   <p className="mt-3 text-sm leading-7 text-white/70">
@@ -531,7 +525,7 @@ sm:justify-between
 sm:rounded-full
 
 hover:border-[#f3b4a5]
-hover:bg-[#f3b4a5]/10
+hover:bg-[#f3b4a5]/30
                     "
                   >
 
@@ -553,7 +547,7 @@ hover:bg-[#f3b4a5]/10
 
                   </div>
 
-                  <p className="mt-5 text-xs leading-6 text-white/45">
+                  <p className="mt-5 text-xs leading-6 text-white/60">
                     預約表單將於活動開始前開放。
                     <br />
                     開放後即可直接完成預約。

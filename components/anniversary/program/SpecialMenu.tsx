@@ -9,28 +9,28 @@ const drinks = [
   {
     name: "PINK MAYHEM",
     zh: "粉紅失控中",
-    type: "草莓鮮奶",
+    type: "草莓鮮奶  $180",
     temperature: "I",
     image: "/images/anniversary/menu/PINK-MAYHEM.png",
   },
   {
     name: "LAST ROSE",
     zh: "最後一朵玫瑰",
-    type: "熱玫瑰茶",
+    type: "熱玫瑰茶  $180",
     temperature: "H",
     image: "/images/anniversary/menu/LAST-ROSE.png",
   },
   {
     name: "GOLDEN BOUNTY",
     zh: "金色懸賞令",
-    type: "柚子茶",
+    type: "柚子茶  $180",
     temperature: "I / H",
     image: "/images/anniversary/menu/GOLDEN-BOUNTY.png",
   },
   {
     name: "SOUL BLOOM",
     zh: "靈華初綻",
-    type: "葡萄漸層氣泡飲",
+    type: "葡萄漸層氣泡飲  $180",
     temperature: "I",
     image: "/images/anniversary/menu/SOUL-BLOOM-V3.png",
   },
@@ -40,25 +40,25 @@ const desserts = [
   {
     name: "FIRST LIGHT",
     zh: "初弓乍現",
-    type: "草莓重乳酪蛋糕",
+    type: "草莓重乳酪蛋糕  $140",
     image: "/images/anniversary/menu/FIRST-LIGHT.png",
   },
   {
     name: "UNDEFEATED SPRING",
     zh: "不敗的春天",
-    type: "布朗尼蛋糕",
+    type: "布朗尼蛋糕  $150",
     image: "/images/anniversary/menu/UNDEFEATED-SPRING.png",
   },
   {
     name: "ON THE WORLD STAGE",
     zh: "站上世界之時",
-    type: "藍莓起司蛋糕",
+    type: "藍莓起司蛋糕  $140",
     image: "/images/anniversary/menu/ON-THE-WORLD-STAGE-V3.png",
   },
   {
     name: "BEYOND THE STARS",
     zh: "越過群星",
-    type: "巧克力波斯頓",
+    type: "巧克力波斯頓派  $150",
     image: "/images/anniversary/menu/BEYOND-THE-STARS-V2.png",
   },
 ];
@@ -287,13 +287,13 @@ export default function SpecialMenu() {
     height={100}
     className="
       absolute
-      -bottom-4
+      -bottom-2
       right-0
 
-       w-[56px]
-    sm:w-[64px]
-    md:w-[80px]
-    lg:w-[96px]
+       w-[90px]
+    sm:w-[100px]
+    md:w-[100px]
+    lg:w-[120px]
 
     h-auto
     
@@ -425,13 +425,13 @@ export default function SpecialMenu() {
     height={110}
     className="
       absolute
-      -bottom-5
+      -bottom-2
       -right-0
 
-       w-[56px]
-    sm:w-[64px]
-    md:w-[80px]
-    lg:w-[96px]
+       w-[90px]
+    sm:w-[100px]
+    md:w-[100px]
+    lg:w-[120px]
 
     h-auto
 
