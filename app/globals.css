@@ -336,3 +336,65 @@ body {
     transform: translateY(0px);
   }
 }
+
+@keyframes twinkle {
+
+  0%{
+    opacity:.15;
+    filter:brightness(.8);
+  }
+
+  15%{
+    opacity:1;
+    filter:brightness(2.2);
+  }
+
+  25%{
+    opacity:.35;
+    filter:brightness(1);
+  }
+
+  65%{
+    opacity:.8;
+    filter:brightness(1.8);
+  }
+
+  100%{
+    opacity:.2;
+    filter:brightness(.9);
+  }
+
+}
+
+@keyframes drift {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+@keyframes nebulaFloat {
+
+  0% {
+    transform: translate3d(0,0,0);
+  }
+
+  50% {
+    transform: translate3d(25px,-15px,0);
+  }
+
+  100% {
+    transform: translate3d(0,0,0);
+  }
+
+}
+

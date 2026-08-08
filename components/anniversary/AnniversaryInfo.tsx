@@ -2,10 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function AnniversaryInfo() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
+
+  const reservationOpenTime = new Date("2026-08-10T20:00:00+08:00");
+  const reservationOpen = Date.now() >= reservationOpenTime.getTime();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -124,7 +129,7 @@ export default function AnniversaryInfo() {
           {/* Background Number */}
 
           <div
-            aria-hidden
+            aria-hidden="true"
             className="
               pointer-events-none
               absolute
@@ -469,90 +474,94 @@ text-[#f3b4a5]
                             {/* =====================================
                   RESERVATION
               ===================================== */}
+<div
+  className="
+    mt-8
+    overflow-hidden
+    rounded-sm
+    border
+    border-[#f3b4a5]/30
+    bg-gradient-to-br
+    from-[#f3b4a5]/10
+    to-white/[0.03]
+  "
+>
 
-              <div
-                className="
-                  mt-8
-                  overflow-hidden
-                  rounded-sm
-                  border
-                  border-[#f3b4a5]/30
-                  bg-gradient-to-br
-                  from-[#f3b4a5]/10
-                  to-white/[0.03]
-                "
-              >
+  <div className="px-6 py-6">
 
-                <div className="px-6 py-6">
+    <p className="text-xs tracking-[0.35em] text-[#f3b4a5]">
+      RESERVATION
+    </p>
 
-                  <p className="text-xs tracking-[0.35em] text-[#f3b4a5]">
-                    RESERVATION
-                  </p>
+    <h4 className="mt-4 text-2xl font-bold leading-snug">
+      預約入口
+    </h4>
 
-                  <h4 className="mt-4 text-2xl font-bold leading-snug">
-                    預約填單
-                  </h4>
+    <p className="mt-3 text-sm leading-7 text-white/70">
+      週末場次將採表單預約。
+      <br />
+      開放時間將於 8/10 晚間 8 點正式開放。
+    </p>
+             <button
+  type="button"
+  onClick={() => {
 
-                  <p className="mt-3 text-sm leading-7 text-white/70">
-                    週末場次將採表單預約。
-                    <br />
-                    開放時間將於網站公告。
-                  </p>
+    if (!reservationOpen) {
+      alert("預約將於 2026/08/10 20:00 正式開放。");
+      return;
+    }
 
-                  <div
-                    className="
-                      mt-8
+    router.push("/reservation");
 
-flex
-flex-col
-gap-4
+  }}
+  className="
+    mt-8
 
-rounded-3xl
+    flex
+    flex-col
+    gap-4
 
-border
-border-[#f3b4a5]/40
+    rounded-3xl
 
-px-5
-py-4
+    border
+    border-[#f3b4a5]/40
 
-transition-all
-duration-300
+    px-5
+    py-4
 
-sm:flex-row
-sm:items-center
-sm:justify-between
+    transition-all
+    duration-300
 
-sm:rounded-full
+    sm:flex-row
+    sm:items-center
+    sm:justify-between
 
-hover:border-[#f3b4a5]
-hover:bg-[#f3b4a5]/30
-                    "
-                  >
+    sm:rounded-full
 
-                    <div>
+    hover:border-[#f3b4a5]
+    hover:bg-[#f3b4a5]/30
+  "
+>
 
-                      <p className="text-sm font-semibold tracking-[0.12em]">
-                        BOOKING COMING SOON
-                      </p>
+  <div>
 
-                      <p className="mt-1 text-xs tracking-[0.22em] text-white/45">
-                        預約前往
-                      </p>
+    <p className="mt-1 text-xs tracking-[0.22em] text-white/45">
+      {reservationOpen ? "立即前往預約" : "預約尚未開放"}
+    </p>
 
-                    </div>
+  </div>
 
-                    <span className="text-2xl text-[#f3b4a5]">
-                      →
-                    </span>
+  <span className="text-2xl text-[#f3b4a5]">
+    →
+  </span>
 
-                  </div>
+</button>
 
                   <p className="mt-5 text-xs leading-6 text-white/60">
                     預約表單將於活動開始前開放。
                     <br />
                     開放後即可直接完成預約。
                   </p>
-
                 </div>
 
               </div>
@@ -618,7 +627,8 @@ md:gap-5
           </div>
 
         </div>
-             </div>
+
+      </div>
     </section>
   );
 }
