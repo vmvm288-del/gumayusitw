@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { gsap } from "gsap";
+import { toPng } from "html-to-image";
 
 
 function Sparkle({
@@ -17,7 +17,6 @@ function Sparkle({
   duration?: number;
 }) {
 
-;
 
   return (
     <div
@@ -49,15 +48,28 @@ function Sparkle({
 
 export default function ReservationPage() {
 
+  const GAS_URL =
+    "https://script.google.com/macros/s/AKfycbxVMBfsELC9gogqVKTXPzygOrop9CsBTRjVL-evGWuU_ITby1hulqNT-IQIzKNEJRIzpw/exec";
+
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [agree, setAgree] = useState(false);
   const [showRules, setShowRules] = useState(false);
   const [agreed, setAgreed] = useState(false);
-  const ticketRef = useRef<HTMLButtonElement>(null);
+  const ticketRef = useRef<HTMLDivElement>(null);
+  const entryButtonRef = useRef<HTMLButtonElement>(null);
   const particleRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLSpanElement>(null);
   const rightRef = useRef<HTMLSpanElement>(null);
+  const [people, setPeople] = useState(1);
+  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
+  const [ticketStatus, setTicketStatus] = useState<
+  
+  "idle" | "loading" | "ready"
+>("idle");
+
+  const [reservationResult, setReservationResult] = useState<any>(null);
 
   const dates = [
     {
@@ -74,7 +86,7 @@ export default function ReservationPage() {
     },
   ];
 
-  const times = [
+  const [times, setTimes] = useState([
   { time: "11:00", remain: 20 },
   { time: "12:00", remain: 20 },
   { time: "13:00", remain: 20 },
@@ -83,11 +95,12 @@ export default function ReservationPage() {
   { time: "16:00", remain: 20 },
   { time: "17:00", remain: 20 },
   { time: "18:00", remain: 20 },
-];
+]);
   const explodeTicket = () => {
-    if (!ticketRef.current) return;
 
-    const tl = gsap.timeline();
+  if (!entryButtonRef.current) return;
+
+  const tl = gsap.timeline();
 
     tl.to(leftRef.current, {
       x: -60,
@@ -123,7 +136,7 @@ export default function ReservationPage() {
       );
 
     gsap.fromTo(
-      ticketRef.current,
+      entryButtonRef.current,
       { scale: 1, rotate: 0 },
       {
         keyframes: [
@@ -134,6 +147,142 @@ export default function ReservationPage() {
         ease: "back.out(2)",
       }
     );
+
+  };
+
+  const loadRemainingSlots = async (date: string) => {
+    console.log("LOAD SLOTS:", date);
+  try {
+    const response = await fetch(GAS_URL, {
+      method: "POST",
+      body: JSON.stringify({
+  action: "get_slots",
+  date,
+}),
+    });
+
+    const result = await response.json();
+
+    console.log("SLOT RESULT:", result);
+
+    if (!result.success) {
+      return;
+    }
+
+    setTimes((currentTimes) =>
+      currentTimes.map((slot) => ({
+        ...slot,
+        remain: result.remain[slot.time] ?? slot.remain,
+      }))
+    );
+
+  } catch (error) {
+    console.error("讀取剩餘名額失敗：", error);
+  }
+};
+
+const saveTicketAsImage = async () => {
+  if (!ticketRef.current) return;
+
+  try {
+    const element = ticketRef.current;
+
+    console.log("TICKET SIZE:", {
+      clientWidth: element.clientWidth,
+      clientHeight: element.clientHeight,
+      offsetWidth: element.offsetWidth,
+      offsetHeight: element.offsetHeight,
+      scrollWidth: element.scrollWidth,
+      scrollHeight: element.scrollHeight,
+      rectWidth: element.getBoundingClientRect().width,
+      rectHeight: element.getBoundingClientRect().height,
+    });
+
+    const width = element.clientWidth;
+    const height = element.clientHeight;
+    const dataUrl = await toPng(element, {
+  pixelRatio: 2,
+  cacheBust: true,
+  width,
+  height,
+});
+
+    const link = document.createElement("a");
+
+    link.download = `PROJECT.AD98-${reservationResult?.date || "entry-pass"}.png`;
+    link.href = dataUrl;
+
+    link.click();
+
+  } catch (error) {
+    console.error("保存入場憑證失敗：", error);
+    alert("入場憑證保存失敗，請稍後再試。");
+  }
+};
+
+  const submitReservation = async () => {
+    const reservationData = {
+      nickname,
+      email,
+      people,
+      date: selectedDate,
+      time: selectedTime,
+    };
+
+    const response = await fetch(GAS_URL, {
+      method: "POST",
+      body: JSON.stringify(reservationData),
+    });
+
+    const result = await response.json();
+    console.log("SLOT RESULT:", result);
+
+    if (!result.success) {
+      console.log("GAS RESULT:", result);
+
+      switch (result.error) {
+        case "reservation_not_open":
+          alert("預約尚未開放，請於開放時間後再試。");
+          break;
+        case "missing_fields":
+          alert("請確認所有預約資料都已填寫完整。");
+          break;
+        case "invalid_people":
+          alert("每次預約最多 2 位。");
+          break;
+        case "email_already_booked":
+          alert("此 Email 今日已完成預約，每人每日限預約一個時段。");
+          break;
+        case "not_enough_slots":
+          alert(`此時段剩餘名額不足，目前僅剩 ${result.remain} 位。`);
+          break;
+        default:
+          alert("預約失敗：" + JSON.stringify(result));
+      }
+
+      return;
+    }
+
+    setReservationResult(result.reservation);
+
+// 更新目前選擇日期的剩餘名額
+if (result.remain !== undefined) {
+  setTimes((currentTimes) =>
+    currentTimes.map((slot) => ({
+      ...slot,
+      remain:
+        slot.time === selectedTime
+          ? result.remain
+          : slot.remain,
+    }))
+  );
+}
+
+setTicketStatus("loading");
+
+setTimeout(() => {
+  setTicketStatus("ready");
+}, 2200);
   };
 
   return (
@@ -254,19 +403,19 @@ export default function ReservationPage() {
       <div className="relative z-10">
 
         {/* Hero */}
-        <section className="mx-auto flex min-h-[36vh] max-w-5xl flex-col justify-center px-12">
+        <section className="mx-auto flex min-h-[36vh] max-w-5xl flex-col justify-center px-6 md:px-12">
 
           <p className="text-xs tracking-[0.45em] text-[#f3b4a5]">
             RESERVATION
           </p>
 
-          <div className="mt-8 max-w-2xl border-t border-white/10 py-8">
+          <div className="mt-6 max-w-2xl border-t border-white/10 py-6 md:mt-8 md:py-8">
 
-            <h1 className="text-5xl font-light tracking-wide">
+            <h1 className="text-4xl font-light tracking-wide md:text-5xl">
               預約入場
             </h1>
 
-            <p className="mt-8 text-lg leading-9 text-white/70">
+            <p className="mt-6 text-base leading-8 text-white/70 md:mt-8 md:text-lg md:leading-9">
               旅程即將開始。
               <br />
               完成預約後，系統將產生專屬入場憑證。
@@ -279,16 +428,16 @@ export default function ReservationPage() {
         </section>
 
         {/* Form */}
-        <section className="mx-auto max-w-5xl px-12 pb-32">
+        <section className="mx-auto max-w-5xl px-6 pb-32 md:px-12">
 
           {/* 預約資料 */}
-          <section className="border-t border-white/10 pt-10">
+          <section className="border-t border-white/10 pt-8 md:pt-10">
 
             <h2 className="text-xl font-light">
               預約資訊
             </h2>
 
-            <div className="mt-10 space-y-10">
+            <div className="mt-8 space-y-8 md:mt-10 md:space-y-10">
 
               <div>
                 <label className="text-white/80">
@@ -296,8 +445,11 @@ export default function ReservationPage() {
                 </label>
 
                 <input
-                  className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-lg outline-none transition focus:border-[#f3b4a5]"
-                />
+  type="text"
+  value={nickname}
+  onChange={(e) => setNickname(e.target.value)}
+  className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-base outline-none transition focus:border-[#f3b4a5] md:text-lg"
+/>
               </div>
 
               <div>
@@ -306,8 +458,11 @@ export default function ReservationPage() {
                 </label>
 
                 <input
-                  className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-lg outline-none transition focus:border-[#f3b4a5]"
-                />
+  type="email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-base outline-none transition focus:border-[#f3b4a5] md:text-lg"
+/>
               </div>
 
             </div>
@@ -315,7 +470,7 @@ export default function ReservationPage() {
           </section>
 
           {/* 日期 */}
-          <section className="mt-24  pt-10">
+          <section className="mt-16 pt-8 md:mt-24 md:pt-10">
 
             <h2 className="text-xl font-light">
               預約日期
@@ -332,8 +487,11 @@ export default function ReservationPage() {
       <button
         key={date.value}
         type="button"
-        onClick={() => setSelectedDate(date.value)}
-        className={`group rounded-2xl border p-6 text-left transition-all duration-300
+        onClick={() => {
+  setSelectedDate(date.value);
+  loadRemainingSlots(date.value);
+}}
+        className={`group rounded-2xl border p-5 text-left transition-all duration-300 md:p-6
 
         ${
           active
@@ -347,7 +505,7 @@ export default function ReservationPage() {
           {date.week}
         </p>
 
-        <h3 className="mt-4 text-3xl font-light">
+        <h3 className="mt-4 text-2xl font-light md:text-3xl">
           {date.label}
         </h3>
 
@@ -366,13 +524,13 @@ export default function ReservationPage() {
           </section>
 
           {/* 時段 */}
-          <section className="mt-24 border-t border-white/10 pt-10">
+          <section className="mt-16 border-t border-white/10 pt-8 md:mt-24 md:pt-10">
 
             <h2 className="text-xl font-light">
               預約時段
             </h2>
 
-           <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+           <div className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:grid-cols-4 md:gap-4">
 
  {times.map((slot) => {
   const active = selectedTime === slot.time;
@@ -385,7 +543,7 @@ export default function ReservationPage() {
       type="button"
       disabled={full}
       onClick={() => setSelectedTime(slot.time)}
-      className={`group rounded-2xl border p-5 transition-all duration-300 ${
+      className={`group rounded-2xl border p-4 transition-all duration-300 md:p-5 ${
         full
           ? "cursor-not-allowed border-white/10 bg-white/[0.02] opacity-40"
           : active
@@ -398,24 +556,24 @@ export default function ReservationPage() {
   {/* 左側：時間 */}
   <div className="flex flex-1 items-center justify-center">
 
-    <p className="text-3xl font-light tracking-wide">
+    <p className="text-2xl font-light tracking-wide md:text-3xl">
       {slot.time}
     </p>
 
   </div>
 
   {/* 中間：票券裁切線 */}
-  <div className="mx-5 h-24 border-l border-dashed border-white/15" />
+  <div className="mx-3 h-20 border-l border-dashed border-white/15 md:mx-5 md:h-24" />
 
   {/* 右側：剩餘名額 */}
-  <div className="flex w-24 flex-col items-center">
+  <div className="flex w-16 flex-col items-center md:w-24">
 
-    <p className="text-[11px] tracking-[0.2em] text-white/60">
+    <p className="text-[9px] tracking-[0.1em] text-white/60 md:text-[11px] md:tracking-[0.2em]">
       {full ? "已額滿" : "剩餘名額"}
     </p>
 
     <p
-      className={`mt-3 text-3xl font-light ${
+      className={`mt-2 text-2xl font-light md:mt-3 md:text-3xl ${
         full
           ? "text-red-300"
           : low
@@ -438,19 +596,19 @@ export default function ReservationPage() {
           </section>
 
           {/* 須知 */}
-          <section className="mt-24 border-t border-white/10 pt-10">
+          <section className="mt-16 border-t border-white/10 pt-8 md:mt-24 md:pt-10">
 
             <h2 className="text-xl font-light">
               入場須知
             </h2>
 
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:p-8">
 
   <h3 className="text-lg font-light text-white">
     入場須知與預約規範
   </h3>
 
-  <div className="mt-6 space-y-5 text-[15px] leading-7 text-white/70">
+  <div className="mt-6 space-y-5 text-sm leading-7 text-white/70 md:text-[15px]">
 
     <div>
       <p className="font-medium text-[#f3b4a5]">1｜準時報到</p>
@@ -503,7 +661,7 @@ export default function ReservationPage() {
 
   </div>
 
-  <label className="mt-8 flex cursor-pointer items-center gap-3 border-t border-white/10 pt-6">
+  <label className="mt-8 flex cursor-pointer items-start gap-3 border-t border-white/10 pt-6">
 
     <input
   type="checkbox"
@@ -524,49 +682,167 @@ export default function ReservationPage() {
 
           {/* Button */}
 
-          <div className="relative">
+          <div className="relative mt-10 md:mt-12">
 
   <button
-    ref={ticketRef}
-    onClick={() => {
+   ref={entryButtonRef}
+  onClick={() => {
 
-      if (!agreed) {
-        explodeTicket();
-        return;
-      }
+    if (!agreed) {
+      explodeTicket();
+      return;
+    }
 
-      // TODO：送出預約
+    submitReservation();
 
-    }}
-    className={`flex w-full items-center justify-center gap-2 rounded-full py-4 text-lg transition ${
-      agreed
-        ? "border border-[#f3b4a5]/40 bg-[#f3b4a5]/10 hover:bg-[#f3b4a5]/20"
-        : "border border-white/20 bg-white/[0.03] text-white/60 hover:border-red-300/40"
-    }`}
+  }}
+  className={`flex w-full items-center justify-center gap-2 rounded-full py-4 text-base transition md:text-lg ${
+    agreed
+      ? "border border-[#f3b4a5]/40 bg-[#f3b4a5]/10 hover:bg-[#f3b4a5]/20"
+      : "border border-white/20 bg-white/[0.03] text-white/60 hover:border-red-300/40"
+  }`}
+>
+  <span
+    ref={leftRef}
+    className="inline-block"
   >
+    取得入場
+  </span>
 
-    <span
-      ref={leftRef}
-      className="inline-block"
+  <span
+    ref={rightRef}
+    className="inline-block"
+  >
+    憑證
+  </span>
+</button>
+
+{ticketStatus === "loading" && (
+  <div className="mt-5 md:mt-6">
+
+    <div className="flex items-center justify-between">
+
+      <span className="text-xs tracking-[0.3em] text-[#f3b4a5]/80">
+        GENERATING PASS
+      </span>
+
+      <span className="text-xs text-white/40">
+        PROCESSING
+      </span>
+
+    </div>
+
+    <div className="mt-5 h-px overflow-hidden bg-white/10">
+
+      <div className="h-full w-1/3 animate-[ticketLoading_1.8s_ease-in-out_infinite] bg-[#f3b4a5]" />
+
+    </div>
+
+    <p className="mt-4 text-sm text-white/50">
+      正在建立你的專屬入場憑證……
+    </p>
+
+  </div>
+)}
+
+{ticketStatus === "ready" && reservationResult && (
+  <>
+    <div
+      ref={ticketRef}
+      className="mt-8 overflow-hidden rounded-2xl border border-[#f3b4a5]/30 bg-[#080b16]"
     >
-      取得入場
-    </span>
+      <div className="border-b border-white/10 px-5 py-5 md:px-8 md:py-6">
+        <div className="flex items-center justify-between">
+          <p className="text-xs tracking-[0.35em] text-[#f3b4a5]">
+            PROJECT.AD98
+          </p>
 
-    <span
-      ref={rightRef}
-      className="inline-block"
+          <p className="text-xs tracking-[0.25em] text-white/35">
+            ENTRY PASS
+          </p>
+        </div>
+      </div>
+
+      <div className="px-5 py-7 md:px-8 md:py-9">
+        <p className="text-xs tracking-[0.3em] text-white/40">
+          RESERVATION CONFIRMED
+        </p>
+
+        <div className="mt-5">
+          <p className="text-3xl font-light tracking-wide md:text-4xl">
+            {reservationResult.date}
+          </p>
+
+          <p className="mt-2 text-sm tracking-[0.25em] text-[#f3b4a5]/80">
+            {reservationResult.time}
+          </p>
+        </div>
+
+        <div className="mt-7 grid grid-cols-2 gap-4 border-t border-dashed border-white/10 pt-6 md:mt-8 md:gap-6">
+          <div>
+            <p className="text-xs text-white/35">
+              NAME
+            </p>
+
+            <p className="mt-2 text-sm text-white/80">
+              {reservationResult.nickname}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs text-white/35">
+              GUESTS
+            </p>
+
+            <p className="mt-2 text-sm text-white/80">
+              {reservationResult.people} 位
+            </p>
+          </div>
+        </div>
+      </div>
+
+     <div className="border-t border-dashed border-white/10 px-5 py-4 md:px-8 md:py-5">
+
+  <div className="rounded-xl border border-[#f3b4a5]/50 bg-[#f3b4a5]/10 px-4 py-3">
+
+    <p className="text-xs font-medium tracking-[0.12em] text-[#f3b4a5]">
+      如何得知自己預約成功~
+    </p>
+
+    <p className="mt-2 text-sm font-medium leading-6 text-white/90">
+      未收到電子郵件退件通知，即視為預約成功。
+    </p>
+
+    <p className="mt-1 text-xs leading-5 text-white/50">
+      若收到退件通知，則本入場憑證即刻作廢喔。
+    </p>
+
+  </div>
+
+  <p className="mt-4 text-xs leading-6 text-white/40">
+    活動當天請出示此憑證，並於預約時段前 5 分鐘抵達。
+  </p>
+
+</div>
+    </div>
+
+    <button
+      type="button"
+      onClick={saveTicketAsImage}
+      className="mt-6 w-full rounded-full border border-[#f3b4a5]/40 bg-[#f3b4a5]/10 px-6 py-4 text-sm tracking-[0.2em] text-[#f3b4a5] transition-all duration-300 hover:border-[#f3b4a5] hover:bg-[#f3b4a5]/20"
     >
-      憑證
-    </span>
+      保存入場憑證
+    </button>
+  </>
+)}
 
-  </button>
+  </div>
+
+</section>
 
 </div>
 
-        </section>
+</main>
 
-      </div>
-
-    </main>
-  );
+);
 }

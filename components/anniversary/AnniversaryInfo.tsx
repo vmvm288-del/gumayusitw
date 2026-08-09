@@ -9,7 +9,8 @@ export default function AnniversaryInfo() {
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
 
-  const reservationOpenTime = new Date("2026-08-10T20:00:00+08:00");
+
+  const reservationOpenTime = new Date("2026-08-08T20:00:00+08:00");
   const reservationOpen = Date.now() >= reservationOpenTime.getTime();
 
   useEffect(() => {

@@ -194,9 +194,9 @@ const handleSubmit = async () => {
 if (submitted) {
   return (
     <main className="min-h-screen bg-[#f0b0a0] text-[#241f35]">
-      <div className="mx-auto flex min-h-screen max-w-3xl items-center justify-center px-6">
+      <div className="mx-auto flex min-h-screen max-w-3xl items-center justify-center px-4 sm:px-6">
 
-        <div className="w-full border border-[#241f35]/20 bg-transparent p-12 text-center">
+        <div className="w-full border border-[#241f35]/20 bg-transparent p-6 sm:p-8 md:p-12 text-center">
 
           <p className="text-xs uppercase tracking-[0.35em] opacity-50">
             PROJECT. AD98
@@ -231,16 +231,16 @@ if (submitted) {
 }
   return (
     <main className="min-h-screen bg-[#f0b0a0] text-[#241f35]">
-      <div className="mx-auto max-w-5xl px-6 py-24">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 md:px-6 md:py-24">
 
         {/* Header */}
-        <header className="border-b border-[#241f35]/20 pb-12">
+        <header className="border-b border-[#241f35]/20 pb-8 sm:pb-10 md:pb-12">
 
           <p className="text-xs uppercase tracking-[0.35em] opacity-50">
             IDOL · PHOTO CONTEST
           </p>
 
-          <h1 className="mt-5 text-4xl font-bold tracking-wide md:text-6xl">
+          <h1 className="mt-4 text-3xl font-bold tracking-wide sm:text-4xl md:mt-5 md:text-6xl">
             圖片投稿
           </h1>
 
@@ -269,7 +269,7 @@ if (submitted) {
     投票頁面及紀念留言筆記本封面。
   </p>
 
-  <div className="mt-12 grid gap-12 md:grid-cols-2">
+  <div className="mt-10 grid gap-8 sm:gap-10 md:mt-12 md:grid-cols-2 md:gap-12">
 
     <FormField
   label="稱呼"
@@ -341,7 +341,7 @@ if (submitted) {
     請填寫作品資訊並上傳投稿照片，每位參加者限投稿乙張作品。
   </p>
 
-  <div className="mt-12 space-y-12">
+  <div className="mt-10 space-y-10 md:mt-12 md:space-y-12">
 
     <FormField
   label="作品名稱"
@@ -406,7 +406,9 @@ if (submitted) {
       <label
         className="
           flex
-          h-64
+          h-48 
+          sm:h-56 
+          md:h-64
           cursor-pointer
           items-center
           justify-center
@@ -436,11 +438,11 @@ if (submitted) {
 
         <div className="text-center">
 
-          <p className="text-5xl">
+          <p className="text-4xl sm:text-5xl">
             +
           </p>
 
-          <p className="mt-4 text-sm uppercase tracking-[0.3em]">
+          <p className="mt-4 text-xs uppercase tracking-[0.25em] sm:text-sm sm:tracking-[0.3em]">
             Click to Upload
           </p>
 
@@ -643,7 +645,7 @@ if (submitted) {
     若涉及著作權或侵權爭議，將由投稿者自行負責。
   </p>
 
-  <div className="mt-12 rounded-xl border border-[#241f35]/20 p-8">
+  <div className="mt-10 rounded-xl border border-[#241f35]/20 p-5 sm:p-6 md:mt-12 md:p-8">
 
     <h3 className="text-lg font-semibold">
       著作權授權與聲明
@@ -692,14 +694,18 @@ if (submitted) {
       onClick={handleSubmit}
       disabled={loading}
       className="
-      mt-12
+      mt-10
       flex
       items-center
-      gap-4
+      gap-3
       border
       border-[#241f35]
-      px-10
-      py-5
+      px-7
+      py-4
+      sm:mt-12
+      sm:gap-4
+      sm:px-10
+      sm:py-5
       text-sm
       font-semibold
       uppercase
