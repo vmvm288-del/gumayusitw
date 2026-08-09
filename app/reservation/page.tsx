@@ -613,7 +613,7 @@ setTimeout(() => {
     <div>
       <p className="font-medium text-[#f3b4a5]">1｜準時報到</p>
       <p className="mt-1">
-        請於預約時段前 5 分鐘抵達現場，並出示預約確認信件或截圖供工作人員核對。
+        請於預約時段前 5 分鐘抵達現場，並出示預約憑證供工作人員核對。
       </p>
     </div>
 
