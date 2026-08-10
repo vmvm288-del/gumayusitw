@@ -483,7 +483,47 @@ setTimeout(() => {
             </div>
 
           </section>
+          {/* 人數 */}
+          <section className="mt-16 border-t border-white/10 pt-8 md:mt-24 md:pt-10">
 
+            <h2 className="text-xl font-light">
+              入場人數
+            </h2>
+
+            <div className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:gap-4">
+
+              {[1, 2].map((count) => {
+
+                const active = people === count;
+
+                return (
+                  <button
+                    key={count}
+                    type="button"
+                    onClick={() => setPeople(count)}
+                    className={`rounded-2xl border p-5 text-center transition-all duration-300 md:p-6 ${
+                      active
+                        ? "border-[#f3b4a5] bg-[#f3b4a5]/10 shadow-[0_0_30px_rgba(243,180,165,.12)]"
+                        : "border-white/10 bg-white/[0.03] hover:border-[#f3b4a5]/40 hover:bg-white/[0.06]"
+                    }`}
+                  >
+
+                    <p className="text-2xl font-light md:text-3xl">
+                      {count}
+                    </p>
+
+                    <p className="mt-2 text-xs tracking-[0.2em] text-white/50">
+                      {count === 1 ? "1 位入場" : "2 位入場"}
+                    </p>
+
+                  </button>
+                );
+
+              })}
+
+            </div>
+
+          </section>
           {/* 日期 */}
           <section className="mt-16 pt-8 md:mt-24 md:pt-10">
 
