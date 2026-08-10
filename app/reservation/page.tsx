@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { toPng } from "html-to-image";
 
@@ -51,7 +51,7 @@ export default function ReservationPage() {
   const GAS_URL =
     "https://script.google.com/macros/s/AKfycbxVMBfsELC9gogqVKTXPzygOrop9CsBTRjVL-evGWuU_ITby1hulqNT-IQIzKNEJRIzpw/exec";
 
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState("2026-09-05");
   const [selectedTime, setSelectedTime] = useState("");
   const [agree, setAgree] = useState(false);
   const [showRules, setShowRules] = useState(false);
@@ -86,7 +86,7 @@ export default function ReservationPage() {
     },
   ];
 
-  const [times, setTimes] = useState([
+  const defaultTimes = [
   { time: "11:00", remain: 20 },
   { time: "12:00", remain: 20 },
   { time: "13:00", remain: 20 },
@@ -95,7 +95,15 @@ export default function ReservationPage() {
   { time: "16:00", remain: 20 },
   { time: "17:00", remain: 20 },
   { time: "18:00", remain: 20 },
-]);
+];
+
+const [timesByDate, setTimesByDate] = useState<
+  Record<string, { time: string; remain: number }[]>
+>({
+  "2026-09-05": defaultTimes,
+  "2026-09-06": defaultTimes,
+});
+
   const explodeTicket = () => {
 
   if (!entryButtonRef.current) return;
@@ -150,36 +158,42 @@ export default function ReservationPage() {
 
   };
 
-  const loadRemainingSlots = async (date: string) => {
-    console.log("LOAD SLOTS:", date);
+const loadRemainingSlots = async (date: string) => {
+  console.log("LOAD SLOTS:", date);
+
   try {
     const response = await fetch(GAS_URL, {
       method: "POST",
       body: JSON.stringify({
-  action: "get_slots",
-  date,
-}),
+        action: "get_slots",
+        date,
+      }),
     });
 
     const result = await response.json();
 
-    console.log("SLOT RESULT:", result);
+    console.log("SLOT RESULT:", date, result);
 
     if (!result.success) {
       return;
     }
 
-    setTimes((currentTimes) =>
-      currentTimes.map((slot) => ({
+    setTimesByDate((current) => ({
+      ...current,
+      [date]: defaultTimes.map((slot) => ({
         ...slot,
         remain: result.remain[slot.time] ?? slot.remain,
-      }))
-    );
+      })),
+    }));
 
   } catch (error) {
     console.error("讀取剩餘名額失敗：", error);
   }
 };
+useEffect(() => {
+  loadRemainingSlots("2026-09-05");
+  loadRemainingSlots("2026-09-06");
+}, []);
 
 const saveTicketAsImage = async () => {
   if (!ticketRef.current) return;
@@ -267,15 +281,16 @@ const saveTicketAsImage = async () => {
 
 // 更新目前選擇日期的剩餘名額
 if (result.remain !== undefined) {
-  setTimes((currentTimes) =>
-    currentTimes.map((slot) => ({
+  setTimesByDate((currentTimesByDate) => ({
+    ...currentTimesByDate,
+    [selectedDate]: currentTimesByDate[selectedDate].map((slot) => ({
       ...slot,
       remain:
         slot.time === selectedTime
           ? result.remain
           : slot.remain,
     }))
-  );
+  }));
 }
 
 setTicketStatus("loading");
@@ -532,8 +547,7 @@ setTimeout(() => {
 
            <div className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:grid-cols-4 md:gap-4">
 
- {times.map((slot) => {
-  const active = selectedTime === slot.time;
+{(timesByDate[selectedDate] || defaultTimes).map((slot) => {  const active = selectedTime === slot.time;
   const full = slot.remain === 0;
   const low = slot.remain > 0 && slot.remain <= 3;
 
