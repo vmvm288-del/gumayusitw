@@ -201,32 +201,67 @@ const saveTicketAsImage = async () => {
   try {
     const element = ticketRef.current;
 
-    console.log("TICKET SIZE:", {
-      clientWidth: element.clientWidth,
-      clientHeight: element.clientHeight,
-      offsetWidth: element.offsetWidth,
-      offsetHeight: element.offsetHeight,
-      scrollWidth: element.scrollWidth,
-      scrollHeight: element.scrollHeight,
-      rectWidth: element.getBoundingClientRect().width,
-      rectHeight: element.getBoundingClientRect().height,
-    });
-
     const width = element.clientWidth;
     const height = element.clientHeight;
-    const dataUrl = await toPng(element, {
-  pixelRatio: 2,
-  cacheBust: true,
-  width,
-  height,
-});
 
+    const dataUrl = await toPng(element, {
+      pixelRatio: 2,
+      cacheBust: true,
+      width,
+      height,
+    });
+
+    // 手機版：開啟圖片，讓使用者長按或使用分享功能保存
+    if (window.innerWidth < 768) {
+      const imageWindow = window.open();
+
+      if (!imageWindow) {
+        alert("請允許開啟新視窗後，再重新點擊保存憑證。");
+        return;
+      }
+
+      imageWindow.document.write(`
+        <html>
+          <head>
+            <title>PROJECT.AD98 ENTRY PASS</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+              body {
+                margin: 0;
+                padding: 20px;
+                background: #050814;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+              }
+
+              img {
+                display: block;
+                width: 100%;
+                max-width: 600px;
+                height: auto;
+              }
+            </style>
+          </head>
+          <body>
+            <img src="${dataUrl}" />
+          </body>
+        </html>
+      `);
+
+      imageWindow.document.close();
+      return;
+    }
+
+    // 電腦版：維持原本直接下載
     const link = document.createElement("a");
 
     link.download = `PROJECT.AD98-${reservationResult?.date || "entry-pass"}.png`;
     link.href = dataUrl;
 
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
 
   } catch (error) {
     console.error("保存入場憑證失敗：", error);
