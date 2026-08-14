@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import ComingSoonGlass from "@/components/anniversary/program/ComingSoonGlass";
+import Image from "next/image";
 
 const prizes = [
   {
@@ -193,7 +194,7 @@ export default function FanSupport() {
           </div>
 
           {/* CODE Content */}
-          <ComingSoonGlass>
+          
 
           <div>
             <p
@@ -212,81 +213,93 @@ export default function FanSupport() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div>
+                {/* Postcard */}
+                <div
+                  className={`
+                    relative overflow-hidden
+                    border border-[#241f35]/30 p-6
+                    transition-all duration-500 ease-out
+                    ${
+                      codeVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }
+                  `}
+                  style={{ transitionDelay: "120ms" }}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-xs tracking-[0.25em] text-[#241f35]/50">
+                        POSTCARD
+                      </p>
 
-              {/* Postcard */}
-              <div
-                className={`
-                  border border-[#241f35]/30 p-6
-                  transition-all duration-500 ease-out
-                  ${
-                    codeVisible
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-4 opacity-0"
-                  }
-                `}
-                style={{ transitionDelay: "120ms" }}
-              >
-                <p className="text-xs tracking-[0.25em] text-[#241f35]/50">
-                  POSTCARD
-                </p>
+                      <p className="mt-3 text-xl font-bold">
+                        明信片
+                      </p>
 
-                <p className="mt-3 text-xl font-bold">
-                  明信片
-                </p>
+                      <p className="mt-2 text-sm text-[#241f35]/65">
+                        隨機發放一張
+                      </p>
+                    </div>
 
-                <p className="mt-2 text-sm text-[#241f35]/65">
-                  隨機發放一張
-                </p>
+                    <div className="pointer-events-none absolute -right-8 -bottom-12 h-55 w-60
+                    ">
+                      <Image
+                        src="/images/anniversary/fan suppert/card.png"
+                        alt="Gumayusi 六週年應援明信片"
+                        fill
+                        className="object-contain"
+                        sizes="112px"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              <div>
+                {/* Coaster */}
+                <div
+                  className={`
+                    border border-[#241f35]/30 p-6
+                    transition-all duration-500 ease-out
+                    ${
+                      codeVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }
+                  `}
+                  style={{ transitionDelay: "180ms" }}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-xs tracking-[0.25em] text-[#241f35]/50">
+                        COASTER
+                      </p>
 
-              {/* Coaster */}
-              <div
-                className={`
-                  border border-[#241f35]/30 p-6
-                  transition-all duration-500 ease-out
-                  ${
-                    codeVisible
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-4 opacity-0"
-                  }
-                `}
-                style={{ transitionDelay: "180ms" }}
-              >
-                <p className="text-xs tracking-[0.25em] text-[#241f35]/50">
-                  COASTER
-                </p>
+                      <p className="mt-3 text-xl font-bold">
+                        杯墊
+                      </p>
 
-                <p className="mt-3 text-xl font-bold">
-                  杯墊
-                </p>
+                      <p className="mt-2 text-sm text-[#241f35]/65">
+                        隨機發放一個
+                      </p>
+                    </div>
 
-                <p className="mt-2 text-sm text-[#241f35]/65">
-                  隨機發放一個
-                </p>
+                    <div className="pointer-events-none absolute -right-2 -bottom-10 h-44 w-44">
+                      <Image
+                        src="/images/anniversary/fan suppert/Coasterv2.png"
+                        alt="Gumayusi 六週年應援杯墊"
+                        fill
+                        className="object-contain"
+                        sizes="112px"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-
-
-            <p
-              className={`
-                mt-6 text-sm leading-7 text-[#241f35]/60
-                transition-all duration-400 ease-out
-                ${
-                  codeVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-3 opacity-0"
-                }
-              `}
-              style={{ transitionDelay: "240ms" }}
-            >
-              應援禮款式隨機發放，恕無法指定。
-              杯墊準備數量僅 200 個，若發放完畢則改為發放小貼紙。
-            </p>
           </div>
-          </ComingSoonGlass>
-        </div>
 
         {/* ========================================
             LUCKY DRAW
@@ -355,8 +368,10 @@ export default function FanSupport() {
             </div>
           </div>
 
+</div>
           {/* ========================================
               PRIZE POOL
+          
           ======================================== */}
 <ComingSoonGlass>
           <div

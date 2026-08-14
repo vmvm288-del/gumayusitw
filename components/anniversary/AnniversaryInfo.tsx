@@ -499,16 +499,14 @@ text-[#f3b4a5]
     </h4>
 
     <p className="mt-3 text-sm leading-7 text-white/70">
-      週末場次將採表單預約。
-      <br />
-      開放時間將於 8/10 晚間 8 點正式開放。
+      週末場次採表單預約。
     </p>
              <button
   type="button"
   onClick={() => {
 
     if (!reservationOpen) {
-      alert("預約將於 2026/08/10 20:00 正式開放。");
+      alert("預約於 2026/08/10 20:00 正式開放。");
       return;
     }
 
@@ -558,11 +556,7 @@ text-[#f3b4a5]
 
 </button>
 
-                  <p className="mt-5 text-xs leading-6 text-white/60">
-                    預約表單將於活動開始前開放。
-                    <br />
-                    開放後即可直接完成預約。
-                  </p>
+                  
                 </div>
 
               </div>
