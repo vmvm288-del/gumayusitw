@@ -276,9 +276,9 @@ export default function AnniversaryInfo() {
 
 
 
-                <p className="mt-4 text-2xl md:text-3xl font-semibold tracking-wide">
-                  11:00 — 19:00
-                </p>
+              <p className="mt-4 text-center text-2xl font-semibold tracking-wide md:text-left md:text-3xl">
+  11:00 — 19:00
+</p>
 
 
 
