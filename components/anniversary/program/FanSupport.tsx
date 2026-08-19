@@ -554,7 +554,7 @@ export default function FanSupport() {
             </div>
 
             {/* Departure Content */}
-            <ComingSoonGlass>
+        
             <div
               className={`
                 transition-all duration-500 ease-out
@@ -570,16 +570,23 @@ export default function FanSupport() {
                 DEBUT ANNIVERSARY ONLY
               </p>
 
-              <h4 className="mt-4 text-2xl font-bold leading-snug md:text-3xl">
-                出道紀念影片觀影
-                ＆ 六週年蛋糕慶祝
-              </h4>
+              <h4 className="mt-4 text-[15px] font-light leading-8 tracking-[0.04em] md:text-[17px]">
+  全天候開放包廂座位，將播放 2023–2025 年世界賽決賽影片，陪伴大家一起回望那些屬於 Gumayusi 的賽場時刻。
+
+  <p className="mt-5">
+    9 月 8 日 17:00，正式開始出道六週年慶祝。主辦準備了客製化蛋糕，邀請到場的糰子們一起分享這份屬於他的生日祝福。
+  </p>
+
+  <p className="mt-5">
+    當日來店的每一位糰子，還會獲得一張空白書籤。拿起桌上的畫筆，寫下想說的話、畫下想畫的東西，替李珉炯踏入第七年的旅程，留下屬於你的祝福。
+  </p>
+</h4>
 
               <p className="mt-6 text-sm leading-7 text-[#241f35]/60">
                 本活動僅於 2026 年 9 月 8 日 Gumayusi 出道紀念日當日進行。
               </p>
             </div>
-            </ComingSoonGlass>
+            
           </div>
         </div>
 
