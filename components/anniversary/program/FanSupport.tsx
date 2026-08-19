@@ -571,7 +571,7 @@ export default function FanSupport() {
               </p>
 
               <h4 className="mt-4 text-[15px] font-light leading-8 tracking-[0.04em] md:text-[17px]">
-  全天候開放包廂座位，將播放 2023–2025 年世界賽決賽影片，陪伴大家一起回望那些屬於 Gumayusi 的賽場時刻。
+  全天候開放包廂座位，將播放 2025 年世界賽決賽影片，陪伴大家一起回望屬於 Gumayusi 的賽場時刻。
 
   <p className="mt-5">
     9 月 8 日 17:00，正式開始出道六週年慶祝。主辦準備了客製化蛋糕，邀請到場的糰子們一起分享這份屬於他的生日祝福。
