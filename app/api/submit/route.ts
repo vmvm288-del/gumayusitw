@@ -16,20 +16,12 @@ export async function POST(req: Request) {
 
     const text = await response.text();
 
-    try {
-      const json = JSON.parse(text);
-
-      return NextResponse.json(json);
-    } catch {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "invalid_response",
-          message: text,
-        },
-        { status: 500 }
-      );
-    }
+return NextResponse.json({
+  upstream_status: response.status,
+  upstream_url: response.url,
+  upstream_content_type: response.headers.get("content-type"),
+  upstream_response: text.slice(0, 1000),
+});
   } catch (error) {
     return NextResponse.json(
       {
