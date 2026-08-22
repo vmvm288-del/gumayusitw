@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import AnniversaryHero from "@/components/anniversary/AnniversaryHero";
+import QuickNavigation from "@/components/anniversary/QuickNavigation";
 import AnniversaryIntro from "@/components/anniversary/AnniversaryIntro";
 import AnniversaryInfo from "@/components/anniversary/AnniversaryInfo";
 import AnniversaryProgram from "@/components/anniversary/program/AnniversaryProgram";
@@ -44,6 +45,7 @@ export default function AnniversaryPage() {
   return (
     <main>
       <AnniversaryHero />
+      <QuickNavigation />
       <AnniversaryIntro />
       <AnniversaryInfo />
       <AnniversaryProgram />

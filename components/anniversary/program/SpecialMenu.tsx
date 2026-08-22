@@ -127,7 +127,9 @@ export default function SpecialMenu() {
   }, []);
 
   return (
-    <section className="w-full bg-[#8177c9] text-white">
+    <section 
+    id="custom-menu"
+    className="w-full bg-[#8177c9] text-white">
       <div className="mx-auto max-w-6xl px-6 pt-16 pb-28">
 
         {/* ========================================

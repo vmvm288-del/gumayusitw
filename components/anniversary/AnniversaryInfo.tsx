@@ -38,6 +38,7 @@ export default function AnniversaryInfo() {
 
   return (
     <section
+      id="event-info"
       ref={sectionRef}
       className="w-full bg-[#8177c9] px-6 py-20 lg:py-24 text-white"
     >

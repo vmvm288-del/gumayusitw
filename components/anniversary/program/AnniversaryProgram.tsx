@@ -137,7 +137,9 @@ export default function AnniversaryProgram() {
         />
 
         {/* 四個活動章節 */}
-        <div className="relative z-10">
+        <div 
+        id="event-program"
+        className="relative z-10">
           <CafeProgram />
           <SpecialMenu />
           <FanSupport />

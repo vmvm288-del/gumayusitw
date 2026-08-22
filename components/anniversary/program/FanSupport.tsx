@@ -2,18 +2,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ComingSoonGlass from "@/components/anniversary/program/ComingSoonGlass";
 import Image from "next/image";
 
 const prizes = [
   {
     rank: "特等賞",
-    name: "活動限定抱枕",
+    name: "活動限定抱枕-Gu娜拉",
     amount: "× 5",
   },
   {
     rank: "一等賞",
-    name: "壓克力搖搖立牌",
+    name: "壓克力旋轉立牌",
     amount: "× 100",
   },
   {
@@ -28,8 +27,8 @@ const prizes = [
   },
   {
     rank: "四等賞",
-    name: "文字中性筆",
-    amount: "× 100",
+    name: "Gumayusi中性筆",
+    amount: "× 200",
   },
 ];
 
@@ -110,6 +109,7 @@ export default function FanSupport() {
 
   return (
     <section
+      id="support"
       ref={sectionRef}
       className="w-full bg-[#f0b0a0] text-[#241f35]"
     >
@@ -300,228 +300,503 @@ export default function FanSupport() {
               </div>
             </div>
           </div>
+        </div>
 
-        {/* ========================================
-            LUCKY DRAW
-        ======================================== */}
+{/* ========================================
+    LUCKY DRAW
+======================================== */}
 
+<div
+  ref={luckyRef}
+  className="mt-24 border-t border-[#241f35]/30 pt-10"
+>
+
+  {/* ========================================
+      LUCKY DRAW INTRO
+  ======================================== */}
+
+  <div className="grid gap-10 md:grid-cols-[1fr_2fr]">
+
+    {/* Lucky Draw Title */}
+    <div
+      className={`
+        transition-all duration-400 ease-out
+        ${
+          luckyVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-4 opacity-0"
+        }
+      `}
+    >
+      <p className="text-xs tracking-[0.35em] text-[#241f35]/60">
+        LUCKY DRAW
+      </p>
+
+      <h4 className="mt-3 text-2xl font-bold">
+        通通有獎
+      </h4>
+    </div>
+
+    {/* Lucky Draw Intro */}
+    <div
+      className={`
+        transition-all duration-500 ease-out
+        ${
+          luckyVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-4 opacity-0"
+        }
+      `}
+      style={{ transitionDelay: "60ms" }}
+    >
+      <p className="text-xl font-medium leading-8">
+        試試手氣嗎？
+        <br />
+        Lucky 的你會抽到哪個型態的 GUMAYUSI 呢？
+      </p>
+
+      {/* Participation */}
+      <div className="mt-10">
+        <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
+          HOW TO JOIN
+        </p>
+
+        <h5 className="mt-2 text-lg font-bold">
+          參與規則
+        </h5>
+
+        <p className="mt-4 max-w-2xl text-sm leading-7 text-[#241f35]/70">
+          凡滿足來店低消，即可獲得 1 次抽獎機會。
+          若搭配甜點升級為套餐，則會獲得 2 次抽獎機會。
+          單人單日最多 2 次抽獎機會。
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+  {/* ========================================
+      PRIZE POOL
+  ======================================== */}
+
+  <div
+    className={`
+      mt-16
+      transition-all duration-500 ease-out
+      ${
+        luckyVisible
+          ? "translate-y-0 opacity-100"
+          : "translate-y-4 opacity-0"
+      }
+    `}
+    style={{ transitionDelay: "120ms" }}
+  >
+
+    <div className="mb-6 flex items-end justify-between">
+      <div>
+        <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
+          LIMITED PRIZES
+        </p>
+
+        <h5 className="mt-2 text-xl font-bold">
+          限定獎項
+        </h5>
+      </div>
+
+      <p className="hidden text-xs tracking-[0.2em] text-[#241f35]/40 md:block">
+        STILL AT THE BEGINNING
+      </p>
+    </div>
+
+
+    {/* Prize Cards */}
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-6">
+
+      {prizes.map((prize, index) => (
         <div
-          ref={luckyRef}
-          className="mt-24 border-t border-[#241f35]/30 pt-10"
+          key={prize.rank}
+          className={`
+            relative
+            min-h-[130px]
+            border border-[#241f35]/30
+            p-5
+            transition-all duration-500 ease-out
+
+            ${
+              index < 2
+                ? "md:col-span-3"
+                : "md:col-span-2"
+            }
+
+            ${
+              luckyVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }
+          `}
+          style={{
+            transitionDelay: `${180 + index * 60}ms`,
+          }}
         >
-          <div className="grid gap-10 md:grid-cols-[1fr_2fr]">
 
-            {/* Lucky Draw Title */}
-            <div
-              className={`
-                transition-all duration-400 ease-out
-                ${
-                  luckyVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }
-              `}
-            >
-              <p className="text-xs tracking-[0.35em] text-[#241f35]/60">
-                LUCKY DRAW
-              </p>
+{/* Prize Image */}
+{index < 4 && (
+  <div
+    className={`
+      absolute
+      ${
+        index === 0
+          ? "bottom-0 right-3 h-[95px] w-[95px] md:bottom-0 md:right-4 md:h-[115px] md:w-[115px]"
+          : index === 1
+            ? "bottom-0 right-0 h-[125px] w-[125px] md:h-[145px] md:w-[145px]"
+            : index === 2
+              ? "bottom-0 right-3 h-[100px] w-[100px] md:bottom-0 md:right-4 md:h-[120px] md:w-[120px]"
+              : "bottom-2 right-3 h-[85px] w-[85px] md:bottom-4 md:right-4 md:h-[100px] md:w-[100px]"
+      }
+    `}
+  >
+    <Image
+      src={[
+        "/images/anniversary/lucky draw/throw pillow.png",
+        "/images/anniversary/lucky draw/Rotating standee.png",
+        "/images/anniversary/lucky draw/Film ticket stub.png",
+        "/images/anniversary/lucky draw/Eyeglass cloth.PNG",
+      ][index]}
+      alt={prize.name}
+      fill
+      className="object-contain"
+      sizes="150px"
+    />
+  </div>
+)}
 
-              <h4 className="mt-3 text-2xl font-bold">
-                通通有獎
-              </h4>
-            </div>
+{/* Prize Rank */}
+<p className="relative z-10 text-xs tracking-[0.25em] text-[#241f35]/45">
+  {prize.rank}
+</p>
 
-            {/* Lucky Draw Intro */}
-            <div
-              className={`
-                transition-all duration-500 ease-out
-                ${
-                  luckyVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }
-              `}
-              style={{ transitionDelay: "60ms" }}
-            >
-              <p className="text-xl font-medium leading-8">
-                試試手氣嗎？
-                <br />
-                Lucky 的你會抽到哪個型態的 GUMAYUSI 呢？
-              </p>
+{/* Prize Name */}
+<p className="relative z-10 mt-3 max-w-[55%] text-base font-semibold md:text-lg">
+  {prize.name}
+</p>
 
-              {/* Participation */}
-              <div className="mt-10">
-                <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
-                  HOW TO JOIN
-                </p>
+{/* Amount */}
+<p className="relative z-10 mt-2 text-xs tracking-[0.18em] text-[#241f35]/55">
+  {prize.amount}
+</p>
 
-                <h5 className="mt-2 text-lg font-bold">
-                  參與規則
-                </h5>
+        </div>
+      ))}
 
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#241f35]/70">
-                  凡滿足來店低消，即可獲得 1 次抽獎機會。
-                  若搭配甜點升級為套餐，則會獲得 2 次抽獎機會。
-                  單人單日最多 2 次抽獎機會。
-                </p>
-              </div>
-            </div>
-          </div>
+    </div>
+
+
+    {/* ========================================
+    CORSAIR SURPRISE
+======================================== */}
+
+<div
+  id="corsair"
+
+  className={`
+    relative
+    mt-3
+    overflow-hidden
+    border border-dashed border-[#241f35]/40
+    bg-[#241f35]/[0.035]
+    px-5 py-6
+    transition-all duration-500 ease-out
+    ${
+      luckyVisible
+        ? "translate-y-0 opacity-100"
+        : "translate-y-4 opacity-0"
+    }
+  `}
+  style={{
+    transitionDelay: `${180 + prizes.length * 60}ms`,
+  }}
+>
+
+  {/* ========================================
+      COMING SOON OVERLAY
+  ======================================== */}
+
+  <div className="absolute inset-0 z-30 flex items-center justify-center bg-[#f0aa98]/95 backdrop-blur-[2px]">
+    <div className="text-center">
+      <p className="text-xs tracking-[0.35em] text-[#241f35]/50">
+        SPECIAL SURPRISE
+      </p>
+
+      <h5 className="mt-3 text-xl font-bold text-[#241f35]">
+        海盜船驚喜即將公開
+      </h5>
+
+      <p className="mt-3 text-xs tracking-[0.2em] text-[#241f35]/45">
+        STAY TUNED
+      </p>
+    </div>
+  </div>
+
+
+  {/* ========================================
+      ORIGINAL CORSAIR CONTENT
+      正式公開時保留這區
+  ======================================== */}
+
+  {/* Header */}
+  <div className="mb-6">
+    <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
+      SPECIAL SURPRISE
+    </p>
+
+    <h5 className="mt-2 text-base font-bold md:text-lg">
+      海盜船周邊抽獎驚喜
+    </h5>
+
+    <p className="mt-2 text-sm leading-7 text-[#241f35]/65">
+      Lucky Draw 驚喜追加！
+      <br className="hidden md:block" />
+      海盜船特別準備了三款 Gumayusi 聯名周邊。
+    </p>
+  </div>
+
+
+  {/* Corsair Prize Cards */}
+  <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+
+    {/* ========================================
+        Acrylic Standee
+    ======================================== */}
+
+    <div
+      className={`
+        relative
+        min-h-[260px]
+        overflow-hidden
+        border border-[#241f35]/30
+        p-5
+        transition-all duration-500 ease-out
+        ${
+          luckyVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-4 opacity-0"
+        }
+      `}
+      style={{
+        transitionDelay: `${240 + prizes.length * 60}ms`,
+      }}
+    >
+      <p className="text-xs tracking-[0.25em] text-[#241f35]/45">
+        SPECIAL PRIZE
+      </p>
+
+      <h6 className="mt-3 text-base font-semibold">
+        Gumayusi 壓克力立牌
+      </h6>
+
+      <p className="mt-2 text-xs tracking-[0.18em] text-[#241f35]/55">
+        × 10
+      </p>
+
+      <div className="absolute bottom-0 right-2 h-[190px] w-[150px]">
+        <img
+          src="/images/anniversary/lucky%20draw/castandee.png"
+          alt="Gumayusi 壓克力立牌"
+          className="h-full w-full object-contain object-bottom"
+        />
+      </div>
+    </div>
+
+
+    {/* ========================================
+        Ribbon
+    ======================================== */}
+
+    <div
+      className={`
+        relative
+        min-h-[260px]
+        overflow-hidden
+        border border-[#241f35]/30
+        p-5
+        transition-all duration-500 ease-out
+        ${
+          luckyVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-4 opacity-0"
+        }
+      `}
+      style={{
+        transitionDelay: `${300 + prizes.length * 60}ms`,
+      }}
+    >
+      <p className="text-xs tracking-[0.25em] text-[#241f35]/45">
+        SPECIAL PRIZE
+      </p>
+
+      <h6 className="mt-3 text-base font-semibold">
+        Gumayusi 飄帶
+      </h6>
+
+      <p className="mt-2 text-xs tracking-[0.18em] text-[#241f35]/55">
+        × 15
+      </p>
+
+      <div className="absolute bottom-3 left-4 right-4">
+        <img
+          src="/images/anniversary/lucky%20draw/caribbonv1.png"
+          alt="Gumayusi 飄帶"
+          className="h-auto w-full object-contain"
+        />
+      </div>
+    </div>
+
+
+    {/* ========================================
+        Eyeglass Cloth
+    ======================================== */}
+
+    <div
+      className={`
+        relative
+        min-h-[260px]
+        overflow-hidden
+        border border-[#241f35]/30
+        p-5
+        transition-all duration-500 ease-out
+        ${
+          luckyVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-4 opacity-0"
+        }
+      `}
+      style={{
+        transitionDelay: `${360 + prizes.length * 60}ms`,
+      }}
+    >
+      <p className="text-xs tracking-[0.25em] text-[#241f35]/45">
+        SPECIAL PRIZE
+      </p>
+
+      <h6 className="mt-3 text-base font-semibold">
+        Gumayusi 擦拭布
+      </h6>
+
+      <p className="mt-2 text-xs tracking-[0.18em] text-[#241f35]/55">
+        × 30
+      </p>
+
+      <div className="absolute bottom-2 right-3 h-[165px] w-[165px]">
+        <img
+          src="/images/anniversary/lucky%20draw/cagumacloth.jpg"
+          alt="Gumayusi 擦拭布"
+          className="h-full w-full object-contain object-bottom"
+        />
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+  {/* ========================================
+      POOL RULES
+  ======================================== */}
+
+  <div className="mt-16 grid gap-6 md:grid-cols-2">
+
+    {/* Carry Over */}
+    <div
+      className={`
+        border border-[#241f35]/30 p-7
+        transition-all duration-500 ease-out
+        ${
+          luckyVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-4 opacity-0"
+        }
+      `}
+      style={{ transitionDelay: "420ms" }}
+    >
+
+      <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
+        CARRY OVER
+      </p>
+
+      <h5 className="mt-3 text-lg font-bold">
+        保留機制
+      </h5>
+
+      <p className="mt-4 text-sm leading-7 text-[#241f35]/70">
+        若當日限定獎項未被全數抽完，剩餘獎項將全數
+        「匯入隔日獎池」，驚喜持續累積。
+      </p>
+
+    </div>
+
+
+    {/* Guarantee */}
+    <div
+      className={`
+        border border-[#241f35]/30 p-7
+        transition-all duration-500 ease-out
+        ${
+          luckyVisible
+            ? "translate-y-0 opacity-100"
+            : "translate-y-4 opacity-0"
+        }
+      `}
+      style={{ transitionDelay: "480ms" }}
+    >
+
+      <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
+        GUARANTEE
+      </p>
+
+      <h5 className="mt-3 text-lg font-bold">
+        保底機制
+      </h5>
+
+      <p className="mt-4 text-sm leading-7 text-[#241f35]/70">
+        若當日準備之限定獎項皆已全數抽完，
+        後續抽選將全面改為贈送「Gumayusi中性筆」乙支。
+      </p>
+
+    </div>
+
+  </div>
+
+
+  {/* ========================================
+      NOTES
+  ======================================== */}
+
+  <div
+    className={`
+      mt-8 space-y-2
+      text-xs leading-6 text-[#241f35]/50
+      transition-all duration-400 ease-out
+      ${
+        luckyVisible
+          ? "translate-y-0 opacity-100"
+          : "translate-y-3 opacity-0"
+      }
+    `}
+    style={{ transitionDelay: "540ms" }}
+  >
+    <p>
+      ＊每日獎池分配將於活動說明圖片中公開。
+    </p>
+
+    <p>
+      ＊備案機制：若中性筆贈送完畢，則以明信片替補。
+    </p>
+  </div>
 
 </div>
-          {/* ========================================
-              PRIZE POOL
-          
-          ======================================== */}
-<ComingSoonGlass>
-          <div
-            className={`
-              mt-16
-              transition-all duration-500 ease-out
-              ${
-                luckyVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0"
-              }
-            `}
-            style={{ transitionDelay: "120ms" }}
-          >
-            <div className="mb-6 flex items-end justify-between">
-              <div>
-                <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
-                  LIMITED PRIZES
-                </p>
-
-                <h5 className="mt-2 text-xl font-bold">
-                  限定獎項
-                </h5>
-              </div>
-
-              <p className="hidden text-xs tracking-[0.2em] text-[#241f35]/40 md:block">
-                STILL AT THE BEGINNING
-              </p>
-            </div>
-
-            <div className="border-t border-[#241f35]/30">
-              {prizes.map((prize, index) => (
-                <div
-                  key={prize.rank}
-                  className={`
-                    grid grid-cols-[90px_1fr_auto]
-                    items-center gap-4
-                    border-b border-[#241f35]/30 py-5
-                    md:grid-cols-[140px_1fr_auto]
-
-                    transition-all duration-400 ease-out
-
-                    ${
-                      luckyVisible
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-3 opacity-0"
-                    }
-                  `}
-                  style={{
-                    transitionDelay: `${180 + index * 45}ms`,
-                  }}
-                >
-                  <p className="text-sm text-[#241f35]/60">
-                    {prize.rank}
-                  </p>
-
-                  <p className="text-base font-medium md:text-lg">
-                    {prize.name}
-                  </p>
-
-                  <p className="text-sm tracking-widest text-[#241f35]/60">
-                    {prize.amount}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-          </ComingSoonGlass>
-
-          {/* ========================================
-              POOL RULES
-          ======================================== */}
-
-          <div className="mt-16 grid gap-6 md:grid-cols-2">
-<ComingSoonGlass>
-            {/* Carry Over */}
-            <div
-              className={`
-                border border-[#241f35]/30 p-7
-                transition-all duration-500 ease-out
-                ${
-                  luckyVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }
-              `}
-              style={{ transitionDelay: "420ms" }}
-            >
-              <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
-                CARRY OVER
-              </p>
-
-              <h5 className="mt-3 text-lg font-bold">
-                保留機制
-              </h5>
-
-              <p className="mt-4 text-sm leading-7 text-[#241f35]/70">
-                若當日限定獎項未被全數抽完，剩餘獎項將全數
-                「匯入隔日獎池」，驚喜持續累積。
-              </p>
-            </div>
-</ComingSoonGlass>
-            {/* Guarantee */}
-            <ComingSoonGlass>
-            <div
-              className={`
-                border border-[#241f35]/30 p-7
-                transition-all duration-500 ease-out
-                ${
-                  luckyVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }
-              `}
-              style={{ transitionDelay: "480ms" }}
-            >
-              <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
-                GUARANTEE
-              </p>
-
-              <h5 className="mt-3 text-lg font-bold">
-                保底機制
-              </h5>
-
-              <p className="mt-4 text-sm leading-7 text-[#241f35]/70">
-                若當日準備之限定獎項皆已全數抽完，
-                後續抽選將全面改為贈送「文字中性筆」乙支。
-              </p>
-            </div>
-</ComingSoonGlass>
-          </div>
-
-          {/* Notes */}
-          <div
-            className={`
-              mt-8 space-y-2
-              text-xs leading-6 text-[#241f35]/50
-              transition-all duration-400 ease-out
-              ${
-                luckyVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-3 opacity-0"
-              }
-            `}
-            style={{ transitionDelay: "540ms" }}
-          >
-            <p>＊每日獎池分配將於活動說明圖片中公開。</p>
-            <p>＊備案機制：若中性筆贈送完畢，則以明信片替補。</p>
-          </div>
-        </div>
 
         {/* ========================================
             DEPARTURE
@@ -551,46 +826,73 @@ export default function FanSupport() {
               <p className="mt-3 text-sm tracking-[0.25em] text-[#241f35]/50">
                 SEPTEMBER 08
               </p>
+
+              <p className="mt-4 text-xl font-bold text-[#241f35]">
+    出道日慶祝
+  </p>
             </div>
 
-            {/* Departure Content */}
-        
-            <div
-              className={`
-                transition-all duration-500 ease-out
-                ${
-                  departureVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }
-              `}
-              style={{ transitionDelay: "70ms" }}
-            >
-              <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
-                DEBUT ANNIVERSARY ONLY
-              </p>
-
-              <h4 className="mt-4 text-[15px] font-light leading-8 tracking-[0.04em] md:text-[17px]">
-  全天候開放包廂座位，將播放 2025 年世界賽決賽影片，陪伴大家一起回望屬於 Gumayusi 的賽場時刻。
-
-  <p className="mt-5">
-    9 月 8 日 17:00，正式開始出道六週年慶祝。主辦準備了客製化蛋糕，邀請到場的糰子們一起分享這份屬於他的生日祝福。
+           <div
+  className={`
+    transition-all duration-500 ease-out
+    ${
+      departureVisible
+        ? "translate-y-0 opacity-100"
+        : "translate-y-4 opacity-0"
+    }
+  `}
+  style={{ transitionDelay: "70ms" }}
+>
+  <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
+    DEBUT ANNIVERSARY ONLY
   </p>
 
-  <p className="mt-5">
-    當日來店的每一位糰子，還會獲得一張空白書籤。拿起桌上的畫筆，寫下想說的話、畫下想畫的東西，替李珉炯踏入第七年的旅程，留下屬於你的祝福。
-  </p>
-</h4>
+  <div className="mt-4 text-[15px] font-light leading-8 tracking-[0.04em] md:text-[17px]">
+    <p>
+      全天候開放包廂座位，將播放 2025 年世界賽決賽影片，陪伴大家一起回望屬於 Gumayusi 的賽場時刻。
+    </p>
 
-              <p className="mt-6 text-sm leading-7 text-[#241f35]/60">
-                本活動僅於 2026 年 9 月 8 日 Gumayusi 出道紀念日當日進行。
-              </p>
-            </div>
+    <p className="mt-5">
+      9 月 8 日 17:00，正式開始出道六週年慶祝。主辦準備了客製化蛋糕，邀請到場的糰子們一起分享這份屬於他的生日祝福。
+    </p>
+
+    <p className="mt-5">
+      當日來店的每一位糰子，還會獲得一張空白書籤。拿起桌上的畫筆，寫下想說的話、畫下想畫的東西，替李珉炯踏入第七年的旅程，留下屬於你的祝福。
+    </p>
+  </div>
+
+   <p className="mt-6 text-sm leading-7 text-[#241f35]/60">
+    本活動僅於 2026 年 9 月 8 日 Gumayusi 出道紀念日當日進行。
+  </p>
+</div>
             
-          </div>
-        </div>
+</div>
 
-      </div>
+{/* Banner */}
+<div
+  className={`
+    mt-12
+    overflow-hidden
+    transition-all duration-700 ease-out
+    ${
+      departureVisible
+        ? "translate-y-0 opacity-100"
+        : "translate-y-4 opacity-0"
+    }
+  `}
+  style={{ transitionDelay: "180ms" }}
+>
+  <Image
+    src="/images/anniversary/98/banner.png"
+    alt="Gumayusi 出道日慶祝"
+    width={1600}
+    height={300}
+    className="h-auto w-full object-cover"
+  />
+</div>
+
+</div>
+</div>
     </section>
   );
 }
