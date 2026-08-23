@@ -517,33 +517,14 @@ export default function FanSupport() {
 >
 
   {/* ========================================
-      COMING SOON OVERLAY
-  ======================================== */}
-
-  <div className="absolute inset-0 z-30 flex items-center justify-center bg-[#f0aa98]/95 backdrop-blur-[2px]">
-    <div className="text-center">
-      <p className="text-xs tracking-[0.35em] text-[#241f35]/50">
-        SPECIAL SURPRISE
-      </p>
-
-      <h5 className="mt-3 text-xl font-bold text-[#241f35]">
-        海盜船驚喜即將公開
-      </h5>
-
-      <p className="mt-3 text-xs tracking-[0.2em] text-[#241f35]/45">
-        STAY TUNED
-      </p>
-    </div>
-  </div>
-
-
-  {/* ========================================
       ORIGINAL CORSAIR CONTENT
       正式公開時保留這區
   ======================================== */}
 
   {/* Header */}
-  <div className="mb-6">
+  <div 
+  id="corsair"
+  className="mb-6">
     <p className="text-xs tracking-[0.3em] text-[#241f35]/50">
       SPECIAL SURPRISE
     </p>
