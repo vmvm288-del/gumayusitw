@@ -367,8 +367,6 @@ export default function FanSupport() {
 
         <p className="mt-4 max-w-2xl text-sm leading-7 text-[#241f35]/70">
           凡滿足來店低消，即可獲得 1 次抽獎機會。
-          若搭配甜點升級為套餐，則會獲得 2 次抽獎機會。
-          單人單日最多 2 次抽獎機會。
         </p>
       </div>
     </div>
@@ -761,8 +759,7 @@ export default function FanSupport() {
       </h5>
 
       <p className="mt-4 text-sm leading-7 text-[#241f35]/70">
-        若當日準備之限定獎項皆已全數抽完，
-        後續抽選將全面改為贈送「Gumayusi中性筆」乙支。
+        當日若其他獎項被抽完，保底必有「Gumayusi中性筆」乙支。
       </p>
 
     </div>
@@ -791,9 +788,7 @@ export default function FanSupport() {
       ＊每日獎池分配將於活動說明圖片中公開。
     </p>
 
-    <p>
-      ＊備案機制：若中性筆贈送完畢，則以明信片替補。
-    </p>
+   
   </div>
 
 </div>
@@ -871,6 +866,7 @@ export default function FanSupport() {
 {/* Banner */}
 <div
   className={`
+    relative
     mt-12
     overflow-hidden
     transition-all duration-700 ease-out
@@ -889,6 +885,21 @@ export default function FanSupport() {
     height={300}
     className="h-auto w-full object-cover"
   />
+
+  {/* 圖源 */}
+  <span
+    className="
+      absolute
+      bottom-1
+      right-4
+      text-[10px]
+      tracking-[0.12em]
+      text-white
+      drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]
+    "
+  >
+    © Riot Games
+  </span>
 </div>
 
 </div>
