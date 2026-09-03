@@ -6,8 +6,6 @@ import AnniversaryIntro from "@/components/anniversary/AnniversaryIntro";
 import AnniversaryInfo from "@/components/anniversary/AnniversaryInfo";
 import AnniversaryProgram from "@/components/anniversary/program/AnniversaryProgram";
 import ProjectTeam from "@/components/anniversary/ProjectTeam";
-import FloatingSubmitBall from "@/components/anniversary/program/FloatingSubmitBall";
-
 export const metadata: Metadata = {
   title: "STILL AT THE BEGINNING",
 
@@ -50,7 +48,6 @@ export default function AnniversaryPage() {
       <AnniversaryInfo />
       <AnniversaryProgram />
       <ProjectTeam />
-      <FloatingSubmitBall />
     </main>
   );
 }
