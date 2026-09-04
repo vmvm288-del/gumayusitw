@@ -2,16 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+
 
 export default function AnniversaryInfo() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const router = useRouter();
+ 
 
 
-  const reservationOpenTime = new Date("2026-08-08T20:00:00+08:00");
-  const reservationOpen = Date.now() >= reservationOpenTime.getTime();
+
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -473,94 +472,7 @@ text-[#f3b4a5]
                 </div>
 
               </a>
-                            {/* =====================================
-                  RESERVATION
-              ===================================== */}
-<div
-  className="
-    mt-8
-    overflow-hidden
-    rounded-sm
-    border
-    border-[#f3b4a5]/30
-    bg-gradient-to-br
-    from-[#f3b4a5]/10
-    to-white/[0.03]
-  "
->
-
-  <div className="px-6 py-6">
-
-    <p className="text-xs tracking-[0.35em] text-[#f3b4a5]">
-      RESERVATION
-    </p>
-
-    <h4 className="mt-4 text-2xl font-bold leading-snug">
-      預約入口
-    </h4>
-
-    <p className="mt-3 text-sm leading-7 text-white/70">
-      週末場次採表單預約。
-    </p>
-             <button
-  type="button"
-  onClick={() => {
-
-    if (!reservationOpen) {
-      alert("預約於 2026/08/10 20:00 正式開放。");
-      return;
-    }
-
-    router.push("/reservation");
-
-  }}
-  className="
-    mt-8
-
-    flex
-    flex-col
-    gap-4
-
-    rounded-3xl
-
-    border
-    border-[#f3b4a5]/40
-
-    px-5
-    py-4
-
-    transition-all
-    duration-300
-
-    sm:flex-row
-    sm:items-center
-    sm:justify-between
-
-    sm:rounded-full
-
-    hover:border-[#f3b4a5]
-    hover:bg-[#f3b4a5]/30
-  "
->
-
-  <div>
-
-    <p className="mt-1 text-xs tracking-[0.22em] text-white/45">
-      {reservationOpen ? "立即前往預約" : "預約尚未開放"}
-    </p>
-
-  </div>
-
-  <span className="text-2xl text-[#f3b4a5]">
-    →
-  </span>
-
-</button>
-
-                  
-                </div>
-
-              </div>
+                 
 
             </div>
 
