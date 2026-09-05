@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ComingSoonGlass from "@/components/anniversary/program/ComingSoonGlass";
+
+const FEEDBACK_FORM_URL = "https://forms.gle/JwVAstkecwgtAWc39";
 
 export default function OnlineProject() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -154,8 +155,9 @@ export default function OnlineProject() {
           </div>
 
           {/* SAVE Content */}
-          <ComingSoonGlass>
           <div>
+
+            {/* Introduction */}
             <p
               className={`
                 max-w-2xl
@@ -172,8 +174,11 @@ export default function OnlineProject() {
               }}
             >
               活動結束後，歡迎留下你對本次六週年應援企劃的感想與建議。
+              <br />
+              也別忘了上傳一張來店照片，留下你與這場活動相遇的紀錄。
             </p>
 
+            {/* Draw Information */}
             <p
               className={`
                 mt-5 max-w-2xl
@@ -189,16 +194,20 @@ export default function OnlineProject() {
                 transitionDelay: "120ms",
               }}
             >
-              完成指定回饋方式即可參與抽獎。
-              詳細參與辦法、活動期間與獎項內容將另行公告。
+              完成回饋表單即可取得後續抽獎資格。
+              <br />
+              抽獎將於應援咖啡廳結束後進行，詳細抽獎辦法與獎項內容將另行公告。
             </p>
 
-            {/* Coming Soon */}
+            {/* ========================================
+                PRIZES
+            ======================================== */}
+
             <div
               className={`
-                mt-10 inline-flex
-                border border-white/30
-                px-5 py-3
+                mt-8
+                border-l border-white/30
+                pl-5
                 transition-all duration-500 ease-out
                 ${
                   saveVisible
@@ -207,15 +216,90 @@ export default function OnlineProject() {
                 }
               `}
               style={{
-                transitionDelay: "180ms",
+                transitionDelay: "160ms",
               }}
             >
-              <span className="text-xs tracking-[0.25em] text-white/60">
-                DETAILS COMING SOON
-              </span>
+              <p className="text-xs tracking-[0.25em] text-white/50">
+                CURRENTLY REVEALED
+              </p>
+
+              <ul className="mt-4 space-y-2 text-sm leading-7 text-white/75">
+                <li>
+                  PROJECT. AD 98特製｜超大掛布
+                </li>
+                <li>
+                  HLE官方周邊｜Gumayusi 聯名睡衣
+                </li>
+                <li>
+                  HLE官方周邊｜Gumayusi 簽名鍵帽
+                </li>
+                <li>
+                  HLE官方周邊｜Gumayusi 個人滑鼠墊
+                </li>
+                <li>
+                  HLE官方周邊｜Gumayusi 磁卡包
+                </li>
+                <li>
+                  無框畫｜數幅
+                </li>
+              </ul>
+
+              <p className="mt-5 text-xs leading-6 text-white/50">
+                更詳細的內容，將於應援咖啡活動結束後公布～
+                <br />
+                或許會有其他驚喜（？
+              </p>
             </div>
+
+            {/* ========================================
+                FEEDBACK BUTTON
+            ======================================== */}
+
+            <div
+              className={`
+                mt-10
+                transition-all duration-500 ease-out
+                ${
+                  saveVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-3 opacity-0"
+                }
+              `}
+              style={{
+                transitionDelay: "220ms",
+              }}
+            >
+              <a
+                href={FEEDBACK_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  group
+                  inline-flex items-center gap-6
+                  border border-white/50
+                  px-6 py-4
+                  transition-all duration-300
+                  hover:bg-white
+                  hover:text-[#8177c9]
+                "
+              >
+                <span className="text-xs tracking-[0.25em]">
+                  FILL OUT FEEDBACK
+                </span>
+
+                <span
+                  className="
+                    text-lg
+                    transition-transform duration-300
+                    group-hover:translate-x-1
+                  "
+                >
+                  →
+                </span>
+              </a>
+            </div>
+
           </div>
-</ComingSoonGlass>
         </div>
 
       </div>
