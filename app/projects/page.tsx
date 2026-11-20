@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-[#090909] text-white">
@@ -23,7 +22,76 @@ export default function ProjectsPage() {
         {/* Project List */}
         <section className="border-t border-white/20">
 
-          {/* Project 01 */}
+          {/* Project 00 - Birthday Support */}
+          <a
+            href="https://guma-site.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              group
+              grid
+              gap-8
+              border-b
+              border-white/20
+              py-10
+              transition-colors
+              duration-500
+              hover:bg-white/[0.03]
+              md:grid-cols-[100px_1fr_auto]
+              md:items-center
+              md:px-6
+              md:py-14
+            "
+          >
+            {/* Number / Year */}
+            <div>
+              <p className="text-xs tracking-[0.35em] text-white/35">
+                00
+              </p>
+
+              <p className="mt-3 text-sm tracking-[0.2em] text-white/50">
+                2026
+              </p>
+            </div>
+
+            {/* Project Info */}
+            <div>
+              <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+                GUMAYUSI · BIRTHDAY SUPPORT
+              </p>
+
+              <h2 className="mt-4 text-3xl font-bold tracking-wide md:text-5xl">
+                2026 GUMAYUSI CHEER
+              </h2>
+
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-[0.2em] text-white/40">
+                <span>2026.02.06</span>
+                <span>TAIWAN</span>
+              </div>
+            </div>
+
+            {/* Link */}
+            <div className="flex items-center gap-4 md:justify-end">
+              <span className="text-xs uppercase tracking-[0.3em] text-white/50 transition-colors duration-300 group-hover:text-white">
+                VIEW PROJECT
+              </span>
+
+              <span
+                className="
+                  text-xl
+                  text-white/40
+                  transition-all
+                  duration-300
+                  group-hover:translate-x-2
+                  group-hover:text-white
+                "
+              >
+                →
+              </span>
+            </div>
+          </a>
+
+          {/* Project 01 - 6th Anniversary */}
           <Link
             href="/projects/6th-anniversary"
             className="
